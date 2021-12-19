@@ -6,14 +6,17 @@ public class GameMode : MonoBehaviour
 {
     [SerializeField] private BoolVariable _isPlayersTurn;
     [SerializeField] private BoolVariable _enemiesMoving;
-    [SerializeField] private List<GameObject> _enemies;
+    [SerializeField] private RuntimeGameObjectSet _enemies;
+    [SerializeField] private GameEvent _enemiesMove;
+    [SerializeField] private List<GameObject> _enemyList;
     [SerializeField] private float _turnDelay = 0.1f;
 
     // Start is called before the first frame update
     void Start()
     {
+        _enemyList = new List<GameObject>();
         _isPlayersTurn.Value = true;
-        _isPlayersTurn.Value = false;
+        _enemiesMoving.Value = false;
     }
 
     // Update is called once per frame
@@ -27,12 +30,16 @@ public class GameMode : MonoBehaviour
     private IEnumerator MoveEnemies()
     {
         _enemiesMoving.Value = true;
-        if (_enemies.Count ==0)
+        _enemiesMove.Raise();
+        if (_enemyList.Count ==0)
         {
             yield return new WaitForSeconds(_turnDelay);
         }
-
+        else
+        {
             yield return new WaitForSeconds(_turnDelay);
+
+        }
         
         _enemiesMoving.Value = false;
         _isPlayersTurn.Value = true;
