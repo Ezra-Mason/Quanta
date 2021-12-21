@@ -32,7 +32,7 @@ public class EnemyMoving : MovingObject
 
     public void MoveEnemy()
     {
-        AttemptMove<Interactable>(_nextPosition.x, _nextPosition.y);
         _nextPosition = _ai.GetTargetPosition();
+        AttemptMove<Interactable>(_nextPosition.x, _nextPosition.y);
     }
 }

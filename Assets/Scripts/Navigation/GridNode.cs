@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+[SerializeField]
 public class GridNode
 {
     public GridNode(bool walkable, Vector3 worldPosition, int gridX, int gridY)

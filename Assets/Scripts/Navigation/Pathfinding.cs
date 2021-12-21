@@ -6,12 +6,14 @@ public class Pathfinding : MonoBehaviour
 {
     [SerializeField] private NavGrid _navGrid;
     [SerializeField] private Transform _seeker;
-    [SerializeField] private Transform _target;
+    //[SerializeField] private Transform _target;
+    public List<GridNode> Path => _path;
+    private List<GridNode> _path;
 
 
     private void Update()
     {
-        GetPath(_seeker.position, _target.position);
+        //GetPath(_seeker.position, _target.position);
     }
     public void GetPath(Vector3 start, Vector3 end)
     {
@@ -40,7 +42,7 @@ public class Pathfinding : MonoBehaviour
             //found the end
             if (currentNode == endNode)
             {
-                Debug.Log("Found end node");
+                //Debug.Log("Found end node");
                 RetracePath(startNode, endNode);
                 return;
             }
@@ -88,7 +90,7 @@ public class Pathfinding : MonoBehaviour
 
     private void RetracePath(GridNode start, GridNode end)
     {
-        Debug.Log("retracing path");
+        //Debug.Log("retracing path");
         List<GridNode> path = new List<GridNode>();
         GridNode currentNode = end;
         while (currentNode != start)
@@ -99,5 +101,6 @@ public class Pathfinding : MonoBehaviour
         path.Reverse();
 
         _navGrid.Path = path;
+        _path = path;
     }
 }
