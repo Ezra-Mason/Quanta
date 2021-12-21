@@ -5,15 +5,20 @@ using UnityEngine;
 public class PlayerMovingObject : MovingObject
 {
     [SerializeField] private BoolVariable _isPlayersTurn;
+    [SerializeField] private float _coolDownTime;
+    private float _timer;
     protected override void Start()
     {
         base.Start();
+        _coolDownTime = _moveSettings.InputCoolDown;
     }
 
     // Update is called once per frame
-    void Update()
+    protected override void Update()
     {
-        if (!_isPlayersTurn.Value)
+        base.Update();
+        _timer -= Time.deltaTime;
+        if (!_isPlayersTurn.Value || _moving || _timer >0)
             return;
         float horizontal = (int)Input.GetAxisRaw("Horizontal");
         float vertical = (int)Input.GetAxisRaw("Vertical");
@@ -36,6 +41,7 @@ public class PlayerMovingObject : MovingObject
     protected override void AttemptMove<T>(float xDirection, float zDirection)
     {
         base.AttemptMove<T>(xDirection, zDirection);
+        _timer = _coolDownTime;
         //animation triggers
         _isPlayersTurn.Value = false;
     }

@@ -13,3 +13,7 @@ MonoBehaviour:
   m_Name: PlayerMovingSettings
   m_EditorClassIdentifier: 
   _moveTime: 0.1
+  _blockingLayer:
+    serializedVersion: 2
+    m_Bits: 64
+  _inputCoolDown: 0.5

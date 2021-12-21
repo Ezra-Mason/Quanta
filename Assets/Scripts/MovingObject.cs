@@ -6,7 +6,9 @@ public abstract class MovingObject : MonoBehaviour
 {
     [SerializeField] private Rigidbody _rb;
     [SerializeField] private BoxCollider _collider;
-    [SerializeField] private MovingSettings _moveSettings;
+    [SerializeField] protected MovingSettings _moveSettings;
+    protected bool _moving = false;
+    private Vector3 _target;
     private float _moveTime = 0.1f;
     private float _inverseMoveTime;
     private LayerMask _blockingLayer;
@@ -24,6 +26,19 @@ public abstract class MovingObject : MonoBehaviour
         _inverseMoveTime = 1f / _moveTime;
     }
 
+
+    protected virtual void Update()
+    {
+        if (_moving)
+        {
+            Vector3 newPosition = Vector3.MoveTowards(_rb.position, _target, _inverseMoveTime * Time.deltaTime);
+            _rb.MovePosition(newPosition);
+            if((transform.position - _target).sqrMagnitude < Mathf.Epsilon)
+            {
+                _moving = false;
+            }
+        }
+    }
     /// <summary>
     /// Attempt to move/interact in the direction stated, range is defined by magnitude of input directions
     /// </summary>
@@ -37,7 +52,9 @@ public abstract class MovingObject : MonoBehaviour
         if (canMove && hit.transform == null)
         {
             Vector3 end = transform.position + new Vector3(xDirection, 0f, zDirection);
-            StartCoroutine(SmoothMove(end));
+            _target = end;
+            _moving = true;
+            //StartCoroutine(SmoothMove(end));
             return;
         }
 

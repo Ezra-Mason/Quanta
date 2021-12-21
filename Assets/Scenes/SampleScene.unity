@@ -427,7 +427,8 @@ MonoBehaviour:
   _enemiesMoving: {fileID: 11400000, guid: 3e403ff0c70692f4eafbf4cbaff3da6b, type: 2}
   _enemies: {fileID: 11400000, guid: ec49108c4fac13f42875cdf2a7dc0855, type: 2}
   _enemiesMove: {fileID: 11400000, guid: 0d4e5dabced16a747ae5dcfe16442ebc, type: 2}
-  _enemyList: []
+  _enemyList:
+  - {fileID: 2038859610}
   _turnDelay: 0.1
 --- !u!4 &1649629231
 Transform:
@@ -455,6 +456,8 @@ GameObject:
   - component: {fileID: 2038859613}
   - component: {fileID: 2038859612}
   - component: {fileID: 2038859611}
+  - component: {fileID: 2038859615}
+  - component: {fileID: 2038859616}
   m_Layer: 0
   m_Name: Enemy
   m_TagString: Untagged
@@ -486,8 +489,8 @@ Rigidbody:
   m_Mass: 1
   m_Drag: 0
   m_AngularDrag: 0.05
-  m_UseGravity: 1
-  m_IsKinematic: 0
+  m_UseGravity: 0
+  m_IsKinematic: 1
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
@@ -506,6 +509,8 @@ MonoBehaviour:
   _rb: {fileID: 2038859612}
   _collider: {fileID: 2038859611}
   _moveSettings: {fileID: 11400000, guid: f28258a63f2f9ce4eb38acf2379ccef9, type: 2}
+  _nextPosition: {x: 0, y: 0}
+  _ai: {fileID: 2038859615}
 --- !u!4 &2038859614
 Transform:
   m_ObjectHideFlags: 0
@@ -521,6 +526,46 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2038859615
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2038859610}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f456f68484a265f44aa63b5de358b591, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &2038859616
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2038859610}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1506de3588f9dca479d9f9527df9c60f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Event: {fileID: 11400000, guid: 0d4e5dabced16a747ae5dcfe16442ebc, type: 2}
+  Response:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 2038859613}
+        m_TargetAssemblyTypeName: EnemyMoving, Assembly-CSharp
+        m_MethodName: MoveEnemy
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1001 &1394723931317282279
 PrefabInstance:
   m_ObjectHideFlags: 0

@@ -9,5 +9,8 @@ public class MovingSettings : ScriptableObject
     [SerializeField] private float _moveTime;
     public LayerMask BlockingLayer => _blockingLayer;
     [SerializeField] private LayerMask _blockingLayer;
+    public float InputCoolDown => _inputCoolDown;
+    [SerializeField] private float _inputCoolDown;
+
 
 }
