@@ -10,6 +10,7 @@ public class GameMode : MonoBehaviour
     [SerializeField] private GameEvent _enemiesMove;
     [SerializeField] private List<GameObject> _enemyList;
     [SerializeField] private float _turnDelay = 0.1f;
+    private bool[,] _grid;
 
     // Start is called before the first frame update
     void Start()
@@ -37,6 +38,10 @@ public class GameMode : MonoBehaviour
         }
         else
         {
+            for (int i = 0; i < _enemies.List().Count; i++)
+            {
+                
+            }
             yield return new WaitForSeconds(_turnDelay);
 
         }

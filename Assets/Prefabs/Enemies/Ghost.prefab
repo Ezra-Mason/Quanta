@@ -14,8 +14,9 @@ GameObject:
   - component: {fileID: 7094762902226390653}
   - component: {fileID: 7094762902226390649}
   - component: {fileID: 7094762902226390598}
+  - component: {fileID: 7501506117015836005}
   m_Layer: 0
-  m_Name: Enemy
+  m_Name: Ghost
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -81,8 +82,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Size: {x: 0.9, y: 0.9, z: 0.9}
+  m_Center: {x: 0, y: 0.5, z: 0}
 --- !u!114 &7094762902226390649
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -123,6 +124,21 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+--- !u!114 &7501506117015836005
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7094762902226390652}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ec959264a3b36c44fa8b0755ff1f2cd6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _navGrid: {fileID: 0}
+  _seeker: {fileID: 0}
+  _target: {fileID: 0}
 --- !u!1 &7094762903111784865
 GameObject:
   m_ObjectHideFlags: 0
