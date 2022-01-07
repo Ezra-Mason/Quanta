@@ -35,6 +35,11 @@ public class PlayerActionQueueUI : MonoBehaviour
     {
         _images[_actionExecuted.Value].sprite = _empty;
     }
+
+    public void OnUndoAction()
+    {
+        _images[_queuedActions.Count()].sprite = _empty;   
+    }
     public void OnPreviewedAction()
     {
         _previewedType = _queuedActions.List()[_queuedActions.Count() -1].Type;

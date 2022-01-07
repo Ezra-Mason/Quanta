@@ -10,6 +10,7 @@ public class PlayerTurnManager : MonoBehaviour
     [SerializeField] private TurnActionRuntimeCollection _queuedActions;
     [Header("Events")]
     [SerializeField] private GameEvent _previewedAction;
+    [SerializeField] private GameEvent _undoSelectAction;
     //[SerializeField] private List<TurnAction> _previewedActions = new List<TurnAction>();
     private TurnAction _lastAction;
     public bool IsPlanning => _isPlanning;
@@ -54,6 +55,7 @@ public class PlayerTurnManager : MonoBehaviour
         {
             _lastAction = _queuedActions.List()[_queuedActions.Count() - 1];
         }
+        _undoSelectAction.Raise();
     }
 
     public void OnPlayersTurn()
