@@ -8,6 +8,8 @@ public class PlayerTurnManager : MonoBehaviour
     [SerializeField] private PlayerUnit _playerUnit;
     [SerializeField] private IntVariable _actionToExecute;
     [SerializeField] private TurnActionRuntimeCollection _queuedActions;
+    [Header("Events")]
+    [SerializeField] private GameEvent _previewedAction;
     //[SerializeField] private List<TurnAction> _previewedActions = new List<TurnAction>();
     private TurnAction _lastAction;
     public bool IsPlanning => _isPlanning;
@@ -33,6 +35,7 @@ public class PlayerTurnManager : MonoBehaviour
         _queuedActions.Add(action);
         //_previewedActions.Add(action);
         _lastAction = action;
+        _previewedAction.Raise();
     }
     public void ExecuteNextAction()
     {

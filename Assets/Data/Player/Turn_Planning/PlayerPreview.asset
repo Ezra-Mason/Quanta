@@ -9,10 +9,6 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 241c0927bf1f14041941e248b57c4d78, type: 3}
-  m_Name: PlayerActionControlBindings
+  m_Script: {fileID: 11500000, guid: 3266dee55e3ca354ba11a521094a1db6, type: 3}
+  m_Name: PlayerPreview
   m_EditorClassIdentifier: 
-  _attack: 49
-  _block: 50
-  _wait: 51
-  _undo: 8
