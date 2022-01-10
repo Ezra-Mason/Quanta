@@ -352,6 +352,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _previewPlayerUnit: {fileID: 1419630225947285314}
   _playerUnit: {fileID: 1419630226699980590}
+  _playerPosition: {fileID: 11400000, guid: 7f45bc45a09786147919ea1b5d9aefe3, type: 2}
   _actionToExecute: {fileID: 11400000, guid: 456abe05fdc9be04f81ea21cb99f368b, type: 2}
   _queuedActions: {fileID: 11400000, guid: 97e7f828579ae3b46b66d61aa06d978d, type: 2}
   _previewedAction: {fileID: 11400000, guid: e12458134cf770c46ba33ff4e80d34b9, type: 2}

@@ -83,4 +83,5 @@ public abstract class MovingUnit : MonoBehaviour
         return false;
     }
     protected abstract void OnCantMove<T>(T Component) where T : Component;
+    public abstract void ExecuteAction(TurnAction action);
 }

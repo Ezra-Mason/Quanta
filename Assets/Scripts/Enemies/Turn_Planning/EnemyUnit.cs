@@ -2,14 +2,19 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerUnit : MovingUnit
+public class EnemyUnit : MovingUnit
 {
-    public void ExecuteAction(TurnAction action)
+    protected override void AttemptMove<T>(float xDirection, float zDirection)
+    {
+        base.AttemptMove<T>(xDirection, zDirection);
+    }
+
+    public override void ExecuteAction(TurnAction action)
     {
         switch (action.Type)
         {
             case ActionType.MOVE:
-                Debug.Log(name + "Moved "+ action.Direction);
+                Debug.Log(name + "Moved " + action.Direction);
                 AttemptMove<MovingUnit>(action.Direction.x, action.Direction.y);
                 break;
             case ActionType.ATTACK:
@@ -24,14 +29,12 @@ public class PlayerUnit : MovingUnit
             default:
                 break;
         }
-    }
-    protected override void AttemptMove<T>(float xDirection, float zDirection)
-    {
-        base.AttemptMove<T>(xDirection, zDirection);
+
     }
 
     protected override void OnCantMove<T>(T Component)
     {
+        // implement if needed
         throw new System.NotImplementedException();
     }
 
@@ -44,4 +47,5 @@ public class PlayerUnit : MovingUnit
     {
         base.Update();
     }
+
 }

@@ -6,6 +6,7 @@ public class PlayerTurnManager : MonoBehaviour
 {
     [SerializeField] private PlayerUnit _previewPlayerUnit;
     [SerializeField] private PlayerUnit _playerUnit;
+    [SerializeField] private Vector3Variable _playerPosition;
     [SerializeField] private IntVariable _actionToExecute;
     [SerializeField] private TurnActionRuntimeCollection _queuedActions;
     [Header("Events")]
@@ -22,6 +23,7 @@ public class PlayerTurnManager : MonoBehaviour
     void Start()
     {
         _isPlanning = true;
+        _playerPosition.SetValue(transform.position);
     }
 
     // Update is called once per frame
@@ -68,6 +70,7 @@ public class PlayerTurnManager : MonoBehaviour
 
     public void OnPlayerEndedTurn()
     {
+        _playerPosition.SetValue(transform.position);
         _isPlanning = false;
     }
 }
