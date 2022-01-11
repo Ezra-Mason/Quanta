@@ -43,16 +43,16 @@ public class TurnManager : MonoBehaviour
 
     IEnumerator Moves()
     {
-        Debug.Log("Starting Moves, ");
+        //Debug.Log("Starting Moves, ");
         for (int i = 0; i < _playerActionPoints.Value; i++)
         {
-            Debug.Log("Turn manager raised move, " + _actionToExecute.Value +"/"+ _playerActionPoints.Value);
+            //Debug.Log("Turn manager raised move, " + _actionToExecute.Value +"/"+ _playerActionPoints.Value);
             _actionToExecute.SetValue(i);
             _moveEvent.Raise();
             yield return new WaitForSeconds(_timeBetweenMoves);
         }
         _isExecuting = false;
-        Debug.Log("Turn manager ended moves, " + _actionToExecute.Value + "/" + _playerActionPoints.Value);
+        //Debug.Log("Turn manager ended moves, " + _actionToExecute.Value + "/" + _playerActionPoints.Value);
         PlayersTurnStarted();
         yield return null;
     }

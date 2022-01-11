@@ -42,7 +42,7 @@ public class PlayerTurnManager : MonoBehaviour
     }
     public void ExecuteNextAction()
     {
-        Debug.Log("Player Turn Manager Executing action" + _actionToExecute.Value);
+        //Debug.Log("Player Turn Manager Executing action" + _actionToExecute.Value);
         List<TurnAction> actions = _queuedActions.List();
         _playerUnit.ExecuteAction(actions[_actionToExecute.Value]);
     }

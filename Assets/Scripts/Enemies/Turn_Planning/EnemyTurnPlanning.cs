@@ -6,6 +6,7 @@ using UnityEngine.UI;
 public class EnemyTurnPlanning : MonoBehaviour
 {
     [SerializeField] private EnemyUnit _unit;
+    [SerializeField] private EnemyPlanGenerator _planGenerator;
     private TurnAction[] _plan;
     private ActionType[] _plannedTypes;
     private int _actionPoints = 3;
@@ -31,33 +32,12 @@ public class EnemyTurnPlanning : MonoBehaviour
 
     public void GeneratePlan()
     {
+        _plan = _planGenerator.GeneratePlan(_actionPoints, transform.position, _playerPosition.Value);
         for (int i = 0; i < _actionPoints; i++)
         {
-            int rand = Random.Range(0, 3);
-            ActionType type = (ActionType)rand;
-            ShowImage(type, i);
-            _plannedTypes[i] = type;
-            if (type == ActionType.ATTACK || type == ActionType.MOVE)
-            {
-                Vector3 dir = (_playerPosition.Value - transform.position).normalized;
-                Vector2 direction = new Vector2(dir.x, dir.z);
-                if (Mathf.Abs(direction.x) != 0)
-                {
-                    direction.x = Mathf.Sign(direction.x) * 1;
-                    direction.y = 0f;
-                }
-                if (Mathf.Abs(direction.y) != 0)
-                {
-                    direction.y = Mathf.Sign(direction.y) * 1;
-                    direction.x = 0f;
-                }
-                _plan[i] = new TurnAction(type, direction, 1);
-            }
-            else
-            {
-                _plan[i] = new TurnAction(type, Vector2.zero, 1);
-            }
+            ShowImage(_plan[i].Type, i);
         }
+        Debug.Log(" Enemy plan = " + _plan[0].Type + "->" + _plan[1].Type + "->" + _plan[2].Type);
     }
 
     private void ShowImage(ActionType type, int image)

@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 7582134823990077505}
   - component: {fileID: 3096322845051901409}
   m_Layer: 0
-  m_Name: Square
+  m_Name: Action2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -29,7 +29,7 @@ Transform:
   m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
   m_Children: []
   m_Father: {fileID: 4232722103320811322}
-  m_RootOrder: 0
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &3096322845051901409
 SpriteRenderer:
@@ -109,8 +109,8 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
-  - {fileID: 7582134823990077505}
   - {fileID: 3945507057877404611}
+  - {fileID: 7582134823990077505}
   - {fileID: 6931882091381001999}
   m_Father: {fileID: 6972858258811099606}
   m_RootOrder: 1
@@ -157,7 +157,7 @@ GameObject:
   - component: {fileID: 6931882091381001999}
   - component: {fileID: 2325275172390713948}
   m_Layer: 0
-  m_Name: Square (2)
+  m_Name: Action3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -323,9 +323,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _unit: {fileID: 4469871999379511175}
+  _planGenerator: {fileID: 11400000, guid: 0f88650b78c4f9345a90b09e4a632094, type: 2}
   _images:
-  - {fileID: 3096322845051901409}
   - {fileID: 3737132786573276674}
+  - {fileID: 3096322845051901409}
   - {fileID: 2325275172390713948}
   _ui: {fileID: 11400000, guid: caa9acda2cfab0e4f8bbbb053dd9f3f8, type: 2}
   _playerPosition: {fileID: 11400000, guid: 7f45bc45a09786147919ea1b5d9aefe3, type: 2}
@@ -397,7 +398,7 @@ GameObject:
   - component: {fileID: 3945507057877404611}
   - component: {fileID: 3737132786573276674}
   m_Layer: 0
-  m_Name: Square (1)
+  m_Name: Action1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -415,7 +416,7 @@ Transform:
   m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
   m_Children: []
   m_Father: {fileID: 4232722103320811322}
-  m_RootOrder: 1
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &3737132786573276674
 SpriteRenderer:
