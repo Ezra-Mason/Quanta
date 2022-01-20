@@ -5,13 +5,13 @@ using UnityEngine;
 public abstract class MovingUnit : MonoBehaviour
 {
     [SerializeField] private Rigidbody _rb;
-    [SerializeField] private BoxCollider _collider;
+    [SerializeField] protected BoxCollider _collider;
     [SerializeField] protected MovingSettings _moveSettings;
     protected bool _moving = false;
     private Vector3 _target;
     private float _moveTime = 0.1f;
     private float _inverseMoveTime;
-    private LayerMask _blockingLayer;
+    [SerializeField] protected LayerMask _blockingLayer;
 
 
     // Start is called before the first frame update

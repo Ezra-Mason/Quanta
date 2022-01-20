@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class PlayerTurnManager : MonoBehaviour
 {
-    [SerializeField] private PlayerUnit _previewPlayerUnit;
+    [SerializeField] private PreviewUnit _previewPlayerUnit;
     [SerializeField] private PlayerUnit _playerUnit;
     [SerializeField] private Vector3Variable _playerPosition;
     [SerializeField] private IntVariable _actionToExecute;

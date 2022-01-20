@@ -43,7 +43,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 66d2ebfec001d914aa36012272739db0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _gridExtent: {x: 20, y: 20}
+  _gridExtent: {x: 10, y: 10}
   _nodeSize: 1
   _unwalkable:
     serializedVersion: 2

@@ -737,6 +737,10 @@ PrefabInstance:
       propertyPath: _player
       value: 
       objectReference: {fileID: 1837876581}
+    - target: {fileID: 1538913738280281062, guid: 0f22c45f7ba5e7d4ca11e22d90210c90, type: 3}
+      propertyPath: _unwalkable.m_Bits
+      value: 192
+      objectReference: {fileID: 0}
     - target: {fileID: 3300361868203686539, guid: 0f22c45f7ba5e7d4ca11e22d90210c90, type: 3}
       propertyPath: m_Name
       value: NavGrid
@@ -970,7 +974,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1602834700}
   m_LocalRotation: {x: 0.33168477, y: -0, z: -0, w: 0.9433903}
-  m_LocalPosition: {x: -1.6, y: 9.97, z: -9.64}
+  m_LocalPosition: {x: 0, y: 9.97, z: -9.64}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -1238,7 +1242,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1419630226699980579, guid: 7639ed7a186b2ae41856c30617b42fb7, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0.5
+      value: -3.5
       objectReference: {fileID: 0}
     - target: {fileID: 1419630226699980579, guid: 7639ed7a186b2ae41856c30617b42fb7, type: 3}
       propertyPath: m_LocalRotation.w
