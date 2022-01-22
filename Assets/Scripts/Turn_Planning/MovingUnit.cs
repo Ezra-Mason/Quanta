@@ -9,10 +9,10 @@ public abstract class MovingUnit : MonoBehaviour
     [SerializeField] private BoxCollider _collider;
     [SerializeField] protected MovingSettings _moveSettings;
     protected bool _moving = false;
-    private Vector3 _target;
+    protected Vector3 _target;
     private float _moveTime = 0.1f;
     private float _inverseMoveTime;
-    [SerializeField] protected LayerMask _blockingLayer;
+    protected LayerMask _blockingLayer;
     [SerializeField] protected RuntimeNavGrid _grid;
 
     // Start is called before the first frame update
@@ -65,7 +65,7 @@ public abstract class MovingUnit : MonoBehaviour
 */
     }
 
-    protected bool IsTargetCellOccupied(float xDirection, float zDirection)
+    protected virtual bool IsTargetCellOccupied(float xDirection, float zDirection)
     {
         Vector3 position = transform.position + new Vector3(xDirection, 0f, zDirection);
         GridCell cell = _grid.WorldPointToGridCell(position);

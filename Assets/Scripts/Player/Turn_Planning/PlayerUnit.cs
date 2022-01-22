@@ -36,18 +36,16 @@ public class PlayerUnit : MovingUnit
 
     private void Attack(Vector2 direction)
     {
-        Debug.Log(name + "Attacked in direction " +direction);
         Vector3 start = transform.position;
-        Vector3 end = start + new Vector3(direction.x, 0f, direction.y);
-        //RaycastHit hitInfo;
-        //_collider.enabled = false;
-        //Physics.Linecast(start, end, out hitInfo, _blockingLayer);
-        //_collider.enabled = true;
-        Collider[] colliders = Physics.OverlapSphere(end, 0.2f, _blockingLayer);
+        Vector3 end = transform.position + new Vector3(direction.x, 0.5f, direction.y);
+        Debug.Log(name + " Attacked position  " +end);
+
+        Collider[] colliders = Physics.OverlapSphere(end, 0.4f, _blockingLayer);
         if (colliders != null)
         {
             foreach (Collider coll in colliders)
             {
+                Debug.Log("hit " + coll.name);
                 if (coll.transform != null)
                 {
                     Debug.Log("hit = " + coll.transform.name);
@@ -62,6 +60,10 @@ public class PlayerUnit : MovingUnit
                     Debug.Log("null transform");
                 }
             }
+        }
+        else
+        {
+            Debug.Log("missed attack ");
         }
     }
 

@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class PreviewUnit : MovingUnit
 {
+    [SerializeField] private Transform _attackPreview;
 /*    public override bool ExecuteAction(TurnAction action)
     {
         switch (action.Type)
@@ -56,11 +57,37 @@ public class PreviewUnit : MovingUnit
 
     private void Attack(Vector2 direction)
     {
+        _attackPreview.position = transform.position + new Vector3(direction.x, 1f, direction.y);
     }
-/*    protected override bool AttemptMove<T>(float xDirection, float zDirection)
+
+    // preview player overrides attempt move to ignore player occupied cells 
+    protected override bool IsTargetCellOccupied(float xDirection, float zDirection)
     {
-        base.AttemptMove<T>(xDirection, zDirection);
-    }*/
+        Vector3 position = transform.position + new Vector3(xDirection, 0f, zDirection);
+        GridCell cell = _grid.WorldPointToGridCell(position);
+        if (cell.WorldPosition == transform.position)
+        {
+            return true;
+        }
+        // does the cell contain the player? ignore the player occupying if so
+        Collider[] colls = Physics.OverlapSphere(position, 0.4f, _blockingLayer);
+        foreach (Collider coll in colls)
+        {
+            if (coll.TryGetComponent<PlayerUnit>(out PlayerUnit player))
+            {
+                return false;
+            }
+        }
+        // is the cell occupied or not?
+        if (cell.State == CellState.EMPTY)
+        {
+            return false;
+        }
+        else
+        {
+            return true;
+        }
+    }
 
     protected override void OnCantMove<T>(T Component)
     {

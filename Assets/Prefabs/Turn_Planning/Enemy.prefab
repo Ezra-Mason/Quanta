@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7582134823990077505}
   - component: {fileID: 3096322845051901409}
-  m_Layer: 6
+  m_Layer: 7
   m_Name: Action2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -91,7 +91,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4232722103320811322}
-  m_Layer: 6
+  m_Layer: 7
   m_Name: UI
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -127,7 +127,7 @@ GameObject:
   - component: {fileID: 1206513944191015257}
   - component: {fileID: 5114126274613875134}
   - component: {fileID: 6717029066886230519}
-  m_Layer: 6
+  m_Layer: 7
   m_Name: Cube
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -219,7 +219,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8315535678183652547}
-  m_Layer: 6
+  m_Layer: 7
   m_Name: GFX
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -252,7 +252,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6931882091381001999}
   - component: {fileID: 2325275172390713948}
-  m_Layer: 6
+  m_Layer: 7
   m_Name: Action3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -340,7 +340,7 @@ GameObject:
   - component: {fileID: 1014141688672730054}
   - component: {fileID: 7637567644026207316}
   - component: {fileID: 3646314293597761685}
-  m_Layer: 6
+  m_Layer: 7
   m_Name: Enemy
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -422,7 +422,7 @@ MonoBehaviour:
   _moveSettings: {fileID: 11400000, guid: f28258a63f2f9ce4eb38acf2379ccef9, type: 2}
   _blockingLayer:
     serializedVersion: 2
-    m_Bits: 64
+    m_Bits: 128
   _grid: {fileID: 11400000, guid: 2463f459866643b49abd32c07e3e487b, type: 2}
 --- !u!114 &1014141688672730054
 MonoBehaviour:
@@ -511,7 +511,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3945507057877404611}
   - component: {fileID: 3737132786573276674}
-  m_Layer: 6
+  m_Layer: 7
   m_Name: Action1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -636,11 +636,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -5117700066308340382, guid: 3cb6bac2bf61ec44a8ee394def2c2de5, type: 3}
       propertyPath: m_Layer
-      value: 6
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 117214286460000749, guid: 3cb6bac2bf61ec44a8ee394def2c2de5, type: 3}
       propertyPath: m_Layer
-      value: 6
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 3cb6bac2bf61ec44a8ee394def2c2de5, type: 3}
       propertyPath: m_Name
@@ -648,7 +648,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 3cb6bac2bf61ec44a8ee394def2c2de5, type: 3}
       propertyPath: m_Layer
-      value: 6
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 3cb6bac2bf61ec44a8ee394def2c2de5, type: 3}
       propertyPath: m_IsActive
