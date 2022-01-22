@@ -35,17 +35,33 @@ public class EnemyTurnPlanning : MonoBehaviour
         _plan = _planGenerator.GeneratePlan(_actionPoints, transform.position, _playerPosition.Value);
         for (int i = 0; i < _actionPoints; i++)
         {
-            ShowImage(_plan[i].Type, i);
+            ShowImage(_plan[i], i);
         }
         Debug.Log(" Enemy plan = " + _plan[0].Type + "->" + _plan[1].Type + "->" + _plan[2].Type);
     }
 
-    private void ShowImage(ActionType type, int image)
+    private void ShowImage(TurnAction action, int image)
     {
-        switch (type)
+        switch (action.Type)
         {
             case ActionType.MOVE:
-                _images[image].sprite = _ui.Move;
+                if (action.Direction.x == 1)
+                {
+                    _images[image].sprite = _ui.MoveRight;
+                }
+                if (action.Direction.x == -1)
+                {
+                    _images[image].sprite = _ui.MoveLeft;
+                }
+                if (action.Direction.y == 1)
+                {
+                    _images[image].sprite = _ui.MoveUp;
+                }
+                if (action.Direction.y == -1)
+                {
+                    _images[image].sprite = _ui.MoveDown;
+                }
+                //_images[image].sprite = _ui.Move;
                 break;
             case ActionType.ATTACK:
                 _images[image].sprite = _ui.Attack;

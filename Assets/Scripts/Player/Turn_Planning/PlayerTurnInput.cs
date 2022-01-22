@@ -117,9 +117,12 @@ public class PlayerTurnInput : MonoBehaviour
             // undo the most recent selected action
             if (Input.GetKey(_controls.Undo))
             {
-                _turnManager.UndoAction();
-                _currentActionPoints.Increment();
-                _timer = _coolDownTime;
+                if ( _currentActionPoints.Value < _actionPoints.Value)
+                {
+                    _turnManager.UndoAction();
+                    _currentActionPoints.Increment();
+                    _timer = _coolDownTime;
+                }
             }
 
             //end the players turn
@@ -134,9 +137,11 @@ public class PlayerTurnInput : MonoBehaviour
     }
     private void SelectAction(TurnAction action)
     {
-        _turnManager.PreviewAction(action);
-        _currentActionPoints.SetValue(_currentActionPoints.Value - 1);
-        _timer = _coolDownTime;
-        _selectedAction = ActionType.MOVE;
+        if (_turnManager.PreviewAction(action))
+        {
+            _currentActionPoints.SetValue(_currentActionPoints.Value - 1);
+            _timer = _coolDownTime;
+            _selectedAction = ActionType.MOVE;
+        }
     }
 }

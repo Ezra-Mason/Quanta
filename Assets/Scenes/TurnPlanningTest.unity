@@ -745,6 +745,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: NavGrid
       objectReference: {fileID: 0}
+    - target: {fileID: 3300361868203686539, guid: 0f22c45f7ba5e7d4ca11e22d90210c90, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 9191081900716803676, guid: 0f22c45f7ba5e7d4ca11e22d90210c90, type: 3}
       propertyPath: m_RootOrder
       value: 3
@@ -1432,3 +1436,60 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4b665ba0b6021524783f5fd1d45a15a4, type: 3}
+--- !u!1001 &5700376153698673114
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 5700376152461583954, guid: d6dc363ae9560b6428426723ec84dc5e, type: 3}
+      propertyPath: m_RootOrder
+      value: 12
+      objectReference: {fileID: 0}
+    - target: {fileID: 5700376152461583954, guid: d6dc363ae9560b6428426723ec84dc5e, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5700376152461583954, guid: d6dc363ae9560b6428426723ec84dc5e, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5700376152461583954, guid: d6dc363ae9560b6428426723ec84dc5e, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5700376152461583954, guid: d6dc363ae9560b6428426723ec84dc5e, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5700376152461583954, guid: d6dc363ae9560b6428426723ec84dc5e, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5700376152461583954, guid: d6dc363ae9560b6428426723ec84dc5e, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5700376152461583954, guid: d6dc363ae9560b6428426723ec84dc5e, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5700376152461583954, guid: d6dc363ae9560b6428426723ec84dc5e, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5700376152461583954, guid: d6dc363ae9560b6428426723ec84dc5e, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5700376152461583954, guid: d6dc363ae9560b6428426723ec84dc5e, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5700376152461583964, guid: d6dc363ae9560b6428426723ec84dc5e, type: 3}
+      propertyPath: m_Name
+      value: NavGridVolume
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: d6dc363ae9560b6428426723ec84dc5e, type: 3}

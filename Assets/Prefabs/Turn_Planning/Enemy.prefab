@@ -423,6 +423,7 @@ MonoBehaviour:
   _blockingLayer:
     serializedVersion: 2
     m_Bits: 64
+  _grid: {fileID: 11400000, guid: 2463f459866643b49abd32c07e3e487b, type: 2}
 --- !u!114 &1014141688672730054
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -441,7 +442,7 @@ MonoBehaviour:
   - {fileID: 3737132786573276674}
   - {fileID: 3096322845051901409}
   - {fileID: 2325275172390713948}
-  _ui: {fileID: 11400000, guid: caa9acda2cfab0e4f8bbbb053dd9f3f8, type: 2}
+  _ui: {fileID: 11400000, guid: 2903323d31ac0304e9391e271d37d49a, type: 2}
   _playerPosition: {fileID: 11400000, guid: 7f45bc45a09786147919ea1b5d9aefe3, type: 2}
   _actionToExecute: {fileID: 11400000, guid: 456abe05fdc9be04f81ea21cb99f368b, type: 2}
 --- !u!114 &7637567644026207316

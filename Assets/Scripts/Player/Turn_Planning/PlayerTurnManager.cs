@@ -32,13 +32,17 @@ public class PlayerTurnManager : MonoBehaviour
 
     }
 
-    public void PreviewAction(TurnAction action)
+    public bool PreviewAction(TurnAction action)
     {
-        _previewPlayerUnit.ExecuteAction(action);
-        _queuedActions.Add(action);
-        //_previewedActions.Add(action);
-        _lastAction = action;
-        _previewedAction.Raise();
+        if (_previewPlayerUnit.ExecuteAction(action))
+        {
+            _queuedActions.Add(action);
+            //_previewedActions.Add(action);
+            _lastAction = action;
+            _previewedAction.Raise();
+            return true;
+        }
+        return false;
     }
     public void ExecuteNextAction()
     {

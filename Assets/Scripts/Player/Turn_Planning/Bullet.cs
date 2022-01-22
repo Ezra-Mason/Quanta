@@ -18,12 +18,14 @@ public class Bullet : MovingUnit
     {
         ExecuteAction(_action);
     }
-    public override void ExecuteAction(TurnAction action)
+    public override bool ExecuteAction(TurnAction action)
     {
         if (action.Type == ActionType.MOVE)
         {
-            AttemptMove<MovingUnit>(action.Direction.x, action.Direction.y);
+            return AttemptMove<MovingUnit>(action.Direction.x, action.Direction.y);
         }
+
+        return false;
     }
 
     protected override void OnCantMove<T>(T Component)

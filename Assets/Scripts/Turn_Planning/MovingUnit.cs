@@ -4,15 +4,16 @@ using UnityEngine;
 
 public abstract class MovingUnit : MonoBehaviour
 {
+    [Header("Base Unit")]
     [SerializeField] private Rigidbody _rb;
-    [SerializeField] protected BoxCollider _collider;
+    [SerializeField] private BoxCollider _collider;
     [SerializeField] protected MovingSettings _moveSettings;
     protected bool _moving = false;
     private Vector3 _target;
     private float _moveTime = 0.1f;
     private float _inverseMoveTime;
     [SerializeField] protected LayerMask _blockingLayer;
-
+    [SerializeField] protected RuntimeNavGrid _grid;
 
     // Start is called before the first frame update
     protected virtual void Start()
@@ -41,20 +42,20 @@ public abstract class MovingUnit : MonoBehaviour
     /// </summary>
     /// <param name="xDirection"></param>
     /// <param name="zDirection"></param>
-    protected virtual void AttemptMove<T>(float xDirection, float zDirection) where T : Component
+    protected virtual bool AttemptMove<T>(float xDirection, float zDirection) where T : Component
     {
-        RaycastHit hit;
-        bool canMove = CheckMove(xDirection, zDirection, out hit);
+        //RaycastHit hit;
+        bool isBlocked = IsTargetCellOccupied(xDirection, zDirection);
         // if nothing was hit, start to move to the end
-        if (canMove && hit.transform == null)
+        if (!isBlocked)
         {
             Vector3 end = transform.position + new Vector3(xDirection, 0f, zDirection);
             _target = end;
             _moving = true;
             //StartCoroutine(SmoothMove(end));
-            return;
+            return true;
         }
-
+        return false;
         //if a generic component was found and was hit, call the on move function
         //(to be implemented in inheriting class)
 /*        T hitComponent;
@@ -62,6 +63,25 @@ public abstract class MovingUnit : MonoBehaviour
         if (!canMove && hit.transform != null)
             OnCantMove(hitComponent);
 */
+    }
+
+    protected bool IsTargetCellOccupied(float xDirection, float zDirection)
+    {
+        Vector3 position = transform.position + new Vector3(xDirection, 0f, zDirection);
+        GridCell cell = _grid.WorldPointToGridCell(position);
+        if (cell.WorldPosition == transform.position)
+        {
+            return true;
+        }
+
+        if (cell.State == CellState.EMPTY)
+        {
+            return false;
+        }
+        else
+        {
+            return true;
+        }
     }
 
     protected bool CheckMove(float xDirection, float zDirection, out RaycastHit hit)
@@ -83,5 +103,5 @@ public abstract class MovingUnit : MonoBehaviour
         return false;
     }
     protected abstract void OnCantMove<T>(T Component) where T : Component;
-    public abstract void ExecuteAction(TurnAction action);
+    public abstract bool ExecuteAction(TurnAction action);
 }

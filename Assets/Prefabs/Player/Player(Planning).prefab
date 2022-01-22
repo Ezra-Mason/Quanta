@@ -105,7 +105,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1419630225947285317}
   - component: {fileID: 3348097443727813964}
-  - component: {fileID: 1419630225947285314}
   - component: {fileID: 1419630225947285312}
   - component: {fileID: 1419630225947285315}
   - component: {fileID: 6333299580866845938}
@@ -148,26 +147,8 @@ MonoBehaviour:
   _moveSettings: {fileID: 11400000, guid: 70dd3e73fa7e51441a6ab246e43979b0, type: 2}
   _blockingLayer:
     serializedVersion: 2
-    m_Bits: 256
---- !u!114 &1419630225947285314
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1419630225947285316}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: dca59e0d86b95ad42b65308b88c0271a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _rb: {fileID: 1419630225947285312}
-  _collider: {fileID: 1419630225947285315}
-  _moveSettings: {fileID: 11400000, guid: 70dd3e73fa7e51441a6ab246e43979b0, type: 2}
-  _blockingLayer:
-    serializedVersion: 2
     m_Bits: 64
-  _guns: {fileID: 6333299580866845938}
+  _grid: {fileID: 11400000, guid: 2463f459866643b49abd32c07e3e487b, type: 2}
 --- !u!54 &1419630225947285312
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -381,6 +362,7 @@ MonoBehaviour:
   _blockingLayer:
     serializedVersion: 2
     m_Bits: 64
+  _grid: {fileID: 11400000, guid: 2463f459866643b49abd32c07e3e487b, type: 2}
   _guns: {fileID: 7601493113571106068}
 --- !u!114 &1419630226699980576
 MonoBehaviour:

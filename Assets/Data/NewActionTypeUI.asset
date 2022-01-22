@@ -1,0 +1,22 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 16c0e0060d78b0b4898182efb8a0d27d, type: 3}
+  m_Name: NewActionTypeUI
+  m_EditorClassIdentifier: 
+  _empty: {fileID: 10913, guid: 0000000000000000f000000000000000, type: 0}
+  _attack: {fileID: -984773413336500093, guid: 8e36677af16e3d34f85ad3144038fbbf, type: 3}
+  _block: {fileID: 4611489689034852276, guid: 8e36677af16e3d34f85ad3144038fbbf, type: 3}
+  _moveUp: {fileID: 1143680486127605973, guid: 8e36677af16e3d34f85ad3144038fbbf, type: 3}
+  _moveDown: {fileID: -8011378677527914743, guid: 8e36677af16e3d34f85ad3144038fbbf, type: 3}
+  _moveLeft: {fileID: -1769254427316541858, guid: 8e36677af16e3d34f85ad3144038fbbf, type: 3}
+  _moveRight: {fileID: 73464724697401989, guid: 8e36677af16e3d34f85ad3144038fbbf, type: 3}
+  _wait: {fileID: 2865318604794905265, guid: 8e36677af16e3d34f85ad3144038fbbf, type: 3}
