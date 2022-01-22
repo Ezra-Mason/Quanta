@@ -67,10 +67,6 @@ public class PlayerUnit : MovingUnit
         }
     }
 
-/*    protected override bool AttemptMove<T>(float xDirection, float zDirection)
-    {
-        base.AttemptMove<T>(xDirection, zDirection);
-    }*/
 
     protected override void OnCantMove<T>(T Component)
     {
@@ -78,13 +74,4 @@ public class PlayerUnit : MovingUnit
         throw new System.NotImplementedException();
     }
 
-    protected override void Start()
-    {
-        base.Start();
-    }
-
-    protected override void Update()
-    {
-        base.Update();
-    }
 }

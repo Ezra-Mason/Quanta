@@ -23,7 +23,6 @@ public abstract class MovingUnit : MonoBehaviour
         _inverseMoveTime = 1f / _moveTime;
     }
 
-
     protected virtual void Update()
     {
         if (_moving)
@@ -38,13 +37,12 @@ public abstract class MovingUnit : MonoBehaviour
     }
 
     /// <summary>
-    /// Attempt to move/interact in the direction stated, range is defined by magnitude of input directions
+    /// Attempt to move in the input direction, range is defined by magnitude of input directions
     /// </summary>
     /// <param name="xDirection"></param>
     /// <param name="zDirection"></param>
     protected virtual bool AttemptMove<T>(float xDirection, float zDirection) where T : Component
     {
-        //RaycastHit hit;
         bool isBlocked = IsTargetCellOccupied(xDirection, zDirection);
         // if nothing was hit, start to move to the end
         if (!isBlocked)
@@ -52,17 +50,9 @@ public abstract class MovingUnit : MonoBehaviour
             Vector3 end = transform.position + new Vector3(xDirection, 0f, zDirection);
             _target = end;
             _moving = true;
-            //StartCoroutine(SmoothMove(end));
             return true;
         }
         return false;
-        //if a generic component was found and was hit, call the on move function
-        //(to be implemented in inheriting class)
-/*        T hitComponent;
-        hit.transform.TryGetComponent<T>(out hitComponent);
-        if (!canMove && hit.transform != null)
-            OnCantMove(hitComponent);
-*/
     }
 
     protected virtual bool IsTargetCellOccupied(float xDirection, float zDirection)

@@ -5,28 +5,6 @@ using UnityEngine;
 public class PreviewUnit : MovingUnit
 {
     [SerializeField] private Transform _attackPreview;
-/*    public override bool ExecuteAction(TurnAction action)
-    {
-        switch (action.Type)
-        {
-            case ActionType.MOVE:
-                Debug.Log(name + "Moved " + action.Direction);
-                AttemptMove<MovingUnit>(action.Direction.x, action.Direction.y);
-                break;
-            case ActionType.ATTACK:
-                Attack(action.Direction);
-                //_guns.Shoot(action.Direction);
-                break;
-            case ActionType.BLOCK:
-                Debug.Log(name + "Blocked");
-                break;
-            case ActionType.WAIT:
-                Debug.Log(name + "Waited");
-                break;
-            default:
-                break;
-        }
-    }*/
     public override bool ExecuteAction(TurnAction action)
     {
         bool succeeded = false;
@@ -94,15 +72,4 @@ public class PreviewUnit : MovingUnit
         // implement if needed
         throw new System.NotImplementedException();
     }
-
-    protected override void Start()
-    {
-        base.Start();
-    }
-
-    protected override void Update()
-    {
-        base.Update();
-    }
-
 }

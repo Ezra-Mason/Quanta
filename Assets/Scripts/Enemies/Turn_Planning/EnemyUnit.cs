@@ -4,11 +4,6 @@ using UnityEngine;
 
 public class EnemyUnit : MovingUnit
 {
-/*    protected override void AttemptMove<T>(float xDirection, float zDirection)
-    {
-        base.AttemptMove<T>(xDirection, zDirection);
-    }*/
-
     public override bool ExecuteAction(TurnAction action)
     {
         bool sucess = false;
@@ -41,15 +36,4 @@ public class EnemyUnit : MovingUnit
         // implement if needed
         throw new System.NotImplementedException();
     }
-
-    protected override void Start()
-    {
-        base.Start();
-    }
-
-    protected override void Update()
-    {
-        base.Update();
-    }
-
 }
