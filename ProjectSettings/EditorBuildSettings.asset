@@ -4,5 +4,8 @@
 EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
-  m_Scenes: []
+  m_Scenes:
+  - enabled: 1
+    path: Assets/Scenes/TurnPlanningTest.unity
+    guid: 40bce25f284eed34790eeedec307fe1c
   m_configObjects: {}

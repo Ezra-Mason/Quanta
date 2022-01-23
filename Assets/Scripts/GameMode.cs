@@ -6,7 +6,7 @@ public class GameMode : MonoBehaviour
 {
     [SerializeField] private BoolVariable _isPlayersTurn;
     [SerializeField] private BoolVariable _enemiesMoving;
-    [SerializeField] private RuntimeGameObjectSet _enemies;
+    [SerializeField] private GameObjectRuntimeCollection _enemies;
     [SerializeField] private GameEvent _enemiesMove;
     [SerializeField] private List<GameObject> _enemyList;
     [SerializeField] private float _turnDelay = 0.1f;
