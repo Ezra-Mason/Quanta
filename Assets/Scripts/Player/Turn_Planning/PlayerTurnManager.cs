@@ -20,6 +20,7 @@ public class PlayerTurnManager : MonoBehaviour
     public bool CanInput => _canInput;
     [SerializeField] private bool _canInput;
     private bool _hasBlocked;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -50,17 +51,26 @@ public class PlayerTurnManager : MonoBehaviour
         //Debug.Log("Player Turn Manager Executing action" + _actionToExecute.Value);
         List<TurnAction> actions = _queuedActions.List();
         _playerUnit.ExecuteAction(actions[_actionToExecute.Value]);
+    }
+
+    public void PrepareNextAction()
+    {
+        List<TurnAction> actions = _queuedActions.List();
         if (actions[_actionToExecute.Value].Type == ActionType.BLOCK)
         {
+            _playerUnit.Block();
             _hasBlocked = true;
             return;
         }
         if (_hasBlocked && actions[_actionToExecute.Value].Type != ActionType.BLOCK)
         {
+            _playerUnit.Unblock();
             _hasBlocked = false;
             _playerUnit.Unblock();
         }
     }
+
+
 
     public void UndoAction()
     {

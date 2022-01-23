@@ -5,7 +5,8 @@ using UnityEngine;
 public class EnemyUnit : MovingUnit
 {
     [Header("Enemy Unit")]
-    [SerializeField] private EnemyHealth _enemyHealth;
+    public EnemyHealth _enemyHealth;
+    [SerializeField] private GameObject _block;
     public override bool ExecuteAction(TurnAction action)
     {
         bool sucess = false;
@@ -69,14 +70,16 @@ public class EnemyUnit : MovingUnit
 
     }
 
-    private void Block()
+    public void Block()
     {
         Debug.Log(name + "Blocked");
         _enemyHealth.SetInvincible(true);
+        _block.SetActive(true);
     }
 
     public void Unblock()
     {
+        _block.SetActive(false);
         _enemyHealth.SetInvincible(false);
     }
 

@@ -44,10 +44,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0361072511bb9dd4f8a2f9f520201e5c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _playerActions: {fileID: 11400000, guid: 97e7f828579ae3b46b66d61aa06d978d, type: 2}
-  _moveEvent: {fileID: 11400000, guid: e49854ca7d8ab7e46a49c257352aba0d, type: 2}
+  _gridVolume: {fileID: 0}
+  _prepareEvent: {fileID: 11400000, guid: 3e68e2d14adf4114aaf963f3d1c4b8cd, type: 2}
+  _executeEvent: {fileID: 11400000, guid: e49854ca7d8ab7e46a49c257352aba0d, type: 2}
   _playersTurn: {fileID: 11400000, guid: 3bb94b35d729b614f9ea36bdbf14ed74, type: 2}
   _timeBetweenMoves: 0.5
+  _playerActions: {fileID: 11400000, guid: 97e7f828579ae3b46b66d61aa06d978d, type: 2}
   _actionToExecute: {fileID: 11400000, guid: 456abe05fdc9be04f81ea21cb99f368b, type: 2}
   _playerActionPoints: {fileID: 11400000, guid: 26e5204c486d6b243b0157cfcf623635, type: 2}
   _currentPlayerActionPoints: {fileID: 11400000, guid: bc412c7627034644dbe4b3427f296e80, type: 2}

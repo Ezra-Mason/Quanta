@@ -4,17 +4,22 @@ using UnityEngine;
 
 public class TurnManager : MonoBehaviour
 {
-    [SerializeField] private TurnActionRuntimeCollection _playerActions;
-    [SerializeField] private GameEvent _moveEvent;
+    [Header("Navigation Grid")]
+    [SerializeField] private NavGridVolume _gridVolume;
+    [Header("Events")]
+    [SerializeField] private GameEvent _prepareEvent;
+    [SerializeField] private GameEvent _executeEvent;
     [SerializeField] private GameEvent _playersTurn;
     private bool _isExecuting;
+    [Header("Timings")]
     [SerializeField] private float _timeBetweenMoves = 0.2f;
     private float _timer;
+    [Header("Player")]
+    [SerializeField] private TurnActionRuntimeCollection _playerActions;
     [SerializeField] private IntVariable _actionToExecute;
     [SerializeField] private IntVariable _playerActionPoints;
     [SerializeField] private IntVariable _currentPlayerActionPoints;
 
-    [SerializeField] private NavGridVolume _gridVolume;
     // Start is called before the first frame update
     void Start()
     {
@@ -47,10 +52,13 @@ public class TurnManager : MonoBehaviour
         //Debug.Log("Starting Moves, ");
         for (int i = 0; i < _playerActionPoints.Value; i++)
         {
-            _gridVolume.UpdateGrid();
+
             //Debug.Log("Turn manager raised move, " + _actionToExecute.Value +"/"+ _playerActionPoints.Value);
+            _gridVolume.UpdateGrid();
             _actionToExecute.SetValue(i);
-            _moveEvent.Raise();
+            _prepareEvent.Raise(); // set invincible for blocking mark cells for moving
+            yield return new WaitForEndOfFrame();
+            _executeEvent.Raise(); // do the actions
             yield return new WaitForSeconds(_timeBetweenMoves);
         }
         _isExecuting = false;
@@ -76,6 +84,15 @@ public class TurnManager : MonoBehaviour
         _timer = _timeBetweenMoves;
 
         //Start moving all the units together
+        //PrepareMoves();
         StartCoroutine(Moves());
     }
+
+/*    private void PrepareMoves()
+    {
+        for (int i = 0; i < length; i++)
+        {
+
+        }
+    }*/
 }

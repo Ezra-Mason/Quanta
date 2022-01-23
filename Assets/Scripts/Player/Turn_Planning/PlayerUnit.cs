@@ -6,6 +6,7 @@ public class PlayerUnit : MovingUnit
 {
     [Header("Player Unit")]
     [SerializeField] private PlayerHealth _health;
+    [SerializeField] private GameObject _block;
     //[SerializeField] private PlayerGuns _guns;
 
     public override bool ExecuteAction(TurnAction action)
@@ -37,14 +38,16 @@ public class PlayerUnit : MovingUnit
     }
 
 
-    private void Block()
+    public void Block()
     {
         Debug.Log(name + "Blocked");
+        _block.SetActive(true);
         _health.SetInvincible(true);
     }
 
     public void Unblock()
     {
+        _block.SetActive(false);
         _health.SetInvincible(false);
     }
     private void Attack(Vector2 direction)
@@ -86,5 +89,4 @@ public class PlayerUnit : MovingUnit
         // implement if needed
         throw new System.NotImplementedException();
     }
-
 }
