@@ -14,6 +14,7 @@ public class EnemyTurnPlanning : MonoBehaviour
     [SerializeField] private ActionTypeUI _ui;
     [SerializeField] private Vector3Variable _playerPosition;
     [SerializeField] private IntVariable _actionToExecute;
+    private bool _hasBlocked;
 
 
     // Start is called before the first frame update
@@ -27,7 +28,16 @@ public class EnemyTurnPlanning : MonoBehaviour
     public void OnMoveEvent()
     {
         _unit.ExecuteAction(_plan[_actionToExecute.Value]);
-        
+        if (_plan[_actionToExecute.Value].Type == ActionType.BLOCK)
+        {
+            _hasBlocked = true;
+            return;
+        }
+        if (_hasBlocked && _plan[_actionToExecute.Value].Type != ActionType.BLOCK)
+        {
+            _hasBlocked = false;
+            _unit.Unblock();
+        }
     }
 
     public void GeneratePlan()

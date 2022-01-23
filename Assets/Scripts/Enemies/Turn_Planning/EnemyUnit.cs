@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class EnemyUnit : MovingUnit
 {
+    [Header("Enemy Unit")]
+    [SerializeField] private EnemyHealth _enemyHealth;
     public override bool ExecuteAction(TurnAction action)
     {
         bool sucess = false;
@@ -18,7 +20,7 @@ public class EnemyUnit : MovingUnit
                 sucess = true;
                 break;
             case ActionType.BLOCK:
-                Debug.Log(name + "Blocked");
+                Block();
                 sucess = true;
                 break;
             case ActionType.WAIT:
@@ -66,6 +68,18 @@ public class EnemyUnit : MovingUnit
         }
 
     }
+
+    private void Block()
+    {
+        Debug.Log(name + "Blocked");
+        _enemyHealth.SetInvincible(true);
+    }
+
+    public void Unblock()
+    {
+        _enemyHealth.SetInvincible(false);
+    }
+
     protected override void OnCantMove<T>(T Component)
     {
         // implement if needed

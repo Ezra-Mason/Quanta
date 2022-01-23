@@ -7,6 +7,7 @@ public abstract class UnitHealth : MonoBehaviour
     [SerializeField] private UnitStats _stats;
     protected int _maxHealth;
     protected int _currentHealth;
+    protected bool _isInvicible;
 
 
     protected virtual void Start()
@@ -22,11 +23,19 @@ public abstract class UnitHealth : MonoBehaviour
             return;
         }
 
+        if (_isInvicible)
+            return;
+        
         _currentHealth -= amount;
         if (_currentHealth <=0)
         {
             Die();
         }
+    }
+
+    public void SetInvincible(bool isInvicible)
+    {
+        _isInvicible = isInvicible;
     }
 
     public abstract void Die();

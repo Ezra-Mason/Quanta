@@ -13,12 +13,13 @@ public class PlayerTurnManager : MonoBehaviour
     [SerializeField] private GameEvent _previewedAction;
     [SerializeField] private GameEvent _undoSelectAction;
     //[SerializeField] private List<TurnAction> _previewedActions = new List<TurnAction>();
+    [Header("Booleans")]
     private TurnAction _lastAction;
     public bool IsPlanning => _isPlanning;
     [SerializeField] private bool _isPlanning;
     public bool CanInput => _canInput;
     [SerializeField] private bool _canInput;
-
+    private bool _hasBlocked;
     // Start is called before the first frame update
     void Start()
     {
@@ -49,6 +50,16 @@ public class PlayerTurnManager : MonoBehaviour
         //Debug.Log("Player Turn Manager Executing action" + _actionToExecute.Value);
         List<TurnAction> actions = _queuedActions.List();
         _playerUnit.ExecuteAction(actions[_actionToExecute.Value]);
+        if (actions[_actionToExecute.Value].Type == ActionType.BLOCK)
+        {
+            _hasBlocked = true;
+            return;
+        }
+        if (_hasBlocked && actions[_actionToExecute.Value].Type != ActionType.BLOCK)
+        {
+            _hasBlocked = false;
+            _playerUnit.Unblock();
+        }
     }
 
     public void UndoAction()

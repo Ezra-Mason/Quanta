@@ -359,6 +359,7 @@ MonoBehaviour:
   _collider: {fileID: 1419630226699980578}
   _moveSettings: {fileID: 11400000, guid: f28258a63f2f9ce4eb38acf2379ccef9, type: 2}
   _grid: {fileID: 11400000, guid: 2463f459866643b49abd32c07e3e487b, type: 2}
+  _health: {fileID: 2265027558976928800}
 --- !u!114 &2265027558976928800
 MonoBehaviour:
   m_ObjectHideFlags: 0

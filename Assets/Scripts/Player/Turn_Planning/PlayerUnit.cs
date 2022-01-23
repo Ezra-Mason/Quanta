@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class PlayerUnit : MovingUnit
 {
+    [Header("Player Unit")]
+    [SerializeField] private PlayerHealth _health;
     //[SerializeField] private PlayerGuns _guns;
 
     public override bool ExecuteAction(TurnAction action)
@@ -21,7 +23,7 @@ public class PlayerUnit : MovingUnit
                 //_guns.Shoot(action.Direction);
                 break;
             case ActionType.BLOCK:
-                Debug.Log(name + "Blocked");
+                Block();
                 succeeded = true;
                 break;
             case ActionType.WAIT:
@@ -34,6 +36,17 @@ public class PlayerUnit : MovingUnit
         return succeeded;
     }
 
+
+    private void Block()
+    {
+        Debug.Log(name + "Blocked");
+        _health.SetInvincible(true);
+    }
+
+    public void Unblock()
+    {
+        _health.SetInvincible(false);
+    }
     private void Attack(Vector2 direction)
     {
         Vector3 start = transform.position;

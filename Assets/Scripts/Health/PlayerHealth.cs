@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class PlayerHealth : UnitHealth
 {
@@ -21,7 +22,8 @@ public class PlayerHealth : UnitHealth
 
     public override void Die()
     {
-        throw new System.NotImplementedException();
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+        //throw new System.NotImplementedException();
     }
 
     public override void Heal(int amount)
