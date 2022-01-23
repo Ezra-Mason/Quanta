@@ -5,11 +5,11 @@ using UnityEngine;
 public abstract class UnitHealth : MonoBehaviour
 {
     [SerializeField] private UnitStats _stats;
-    private int _maxHealth;
-    private int _currentHealth;
+    protected int _maxHealth;
+    protected int _currentHealth;
 
 
-    protected void Start()
+    protected virtual void Start()
     {
         _maxHealth = _stats.MaxHealth;
         _currentHealth = _maxHealth;

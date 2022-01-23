@@ -372,6 +372,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _stats: {fileID: 11400000, guid: 85a68d8e6e0df5f478030591835a1e3f, type: 2}
+  _maxHealthVar: {fileID: 11400000, guid: 113b3f0aa802efd48beed43e7843242d, type: 2}
+  _currentHealthVar: {fileID: 11400000, guid: a7c10d8a97621b644b3b8cb9c2cfd8fa, type: 2}
 --- !u!114 &1419630226699980576
 MonoBehaviour:
   m_ObjectHideFlags: 0
