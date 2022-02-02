@@ -61,11 +61,11 @@ public class PlayerCellSelect : MonoBehaviour
             openSet.Remove(currentNode);
             closedSet.Add(currentNode);
 
-            //found the end
-            if (currentNode == endNode)
+            //found the end or exceeded the move limit
+            if (currentNode == endNode || 3 * 8 <= GetNodeDistance(currentNode, startNode))
             {
                 //Debug.Log("Found end node");
-                RetracePath(startNode, endNode);
+                RetracePath(startNode, currentNode);
                 return;
             }
 
