@@ -284,6 +284,8 @@ GameObject:
   - component: {fileID: 1419630226699980591}
   - component: {fileID: 1419630226699980590}
   - component: {fileID: 2265027558976928800}
+  - component: {fileID: 1218110837528913800}
+  - component: {fileID: 740289565824267672}
   - component: {fileID: 1419630226699980576}
   - component: {fileID: 1419630226699980581}
   - component: {fileID: 7601493113571106068}
@@ -378,7 +380,7 @@ MonoBehaviour:
   _stats: {fileID: 11400000, guid: 85a68d8e6e0df5f478030591835a1e3f, type: 2}
   _maxHealthVar: {fileID: 11400000, guid: 113b3f0aa802efd48beed43e7843242d, type: 2}
   _currentHealthVar: {fileID: 11400000, guid: a7c10d8a97621b644b3b8cb9c2cfd8fa, type: 2}
---- !u!114 &1419630226699980576
+--- !u!114 &1218110837528913800
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -386,6 +388,50 @@ MonoBehaviour:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1419630226699980580}
   m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cd6a42b162ec9714384e23bddb3498d1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _controls: {fileID: 11400000, guid: bd7a68929ab6bf942af2a1a08f4bf384, type: 2}
+  _previewPlayerUnit: {fileID: 3348097443727813964}
+  _playerUnit: {fileID: 1419630226699980590}
+  _playerPosition: {fileID: 11400000, guid: 7f45bc45a09786147919ea1b5d9aefe3, type: 2}
+  _actionToExecute: {fileID: 11400000, guid: 456abe05fdc9be04f81ea21cb99f368b, type: 2}
+  _queuedActions: {fileID: 11400000, guid: 97e7f828579ae3b46b66d61aa06d978d, type: 2}
+  _isPlanning: 0
+  _actionPoints: {fileID: 11400000, guid: 26e5204c486d6b243b0157cfcf623635, type: 2}
+  _currentActionPoints: {fileID: 11400000, guid: bc412c7627034644dbe4b3427f296e80, type: 2}
+  _endTurn: {fileID: 11400000, guid: d2c97880690283243a8c96b5ff162427, type: 2}
+  _previewedAction: {fileID: 11400000, guid: e12458134cf770c46ba33ff4e80d34b9, type: 2}
+  _undoSelectAction: {fileID: 11400000, guid: 3dc58029a4e4e0047acf70b29bf85c97, type: 2}
+  _selectedActionType: {fileID: 11400000, guid: 6f62f7cbfddf0654395fe6d4fcfdd505, type: 2}
+--- !u!114 &740289565824267672
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1419630226699980580}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3c2c62021d5093240b9d115a359722f8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _playerTurnPlanning: {fileID: 1218110837528913800}
+  _navGrid: {fileID: 11400000, guid: 2463f459866643b49abd32c07e3e487b, type: 2}
+  _path: {fileID: 11400000, guid: 6561a2878cc004d4aa61b434b653254b, type: 2}
+  _layerMask:
+    serializedVersion: 2
+    m_Bits: 512
+  _target: {x: 0, y: 0, z: 0}
+--- !u!114 &1419630226699980576
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1419630226699980580}
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e2e4d11f9de322d4fa5ae9560f16ed27, type: 3}
   m_Name: 
@@ -406,7 +452,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1419630226699980580}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 54a59641a071e38498be836efd875ecc, type: 3}
   m_Name: 
@@ -424,7 +470,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1419630226699980580}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 880969b4610f2644387719c5c2b03dc8, type: 3}
   m_Name: 
@@ -446,9 +492,9 @@ MonoBehaviour:
   Response:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1419630226699980576}
-        m_TargetAssemblyTypeName: PlayerTurnManager, Assembly-CSharp
-        m_MethodName: PrepareNextAction
+      - m_Target: {fileID: 1218110837528913800}
+        m_TargetAssemblyTypeName: PlayerTurnPlanning, Assembly-CSharp
+        m_MethodName: OnPrepareNextAction
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -474,9 +520,9 @@ MonoBehaviour:
   Response:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1419630226699980576}
-        m_TargetAssemblyTypeName: PlayerTurnManager, Assembly-CSharp
-        m_MethodName: ExecuteNextAction
+      - m_Target: {fileID: 1218110837528913800}
+        m_TargetAssemblyTypeName: PlayerTurnPlanning, Assembly-CSharp
+        m_MethodName: OnExecuteNextAction
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -514,9 +560,9 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 1419630226699980576}
-        m_TargetAssemblyTypeName: PlayerTurnManager, Assembly-CSharp
-        m_MethodName: OnPlayerEndedTurn
+      - m_Target: {fileID: 1218110837528913800}
+        m_TargetAssemblyTypeName: PlayerTurnPlanning, Assembly-CSharp
+        m_MethodName: OnPlayerTurnEnded
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -542,9 +588,9 @@ MonoBehaviour:
   Response:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1419630226699980576}
-        m_TargetAssemblyTypeName: PlayerTurnManager, Assembly-CSharp
-        m_MethodName: OnPlayersTurn
+      - m_Target: {fileID: 1218110837528913800}
+        m_TargetAssemblyTypeName: PlayerTurnPlanning, Assembly-CSharp
+        m_MethodName: OnPlayersTurnStart
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
