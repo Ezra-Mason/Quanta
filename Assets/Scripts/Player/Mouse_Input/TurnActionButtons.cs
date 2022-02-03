@@ -19,8 +19,32 @@ public class TurnActionButtons : MonoBehaviour
         
     }
 
-    public void SelectAction(ActionType actionType)
+    private void SelectAction(ActionType actionType)
     {
-        _selectedAction.Value = actionType;
+        if (_selectedAction.Value == actionType)
+        {
+            _selectedAction.Value = ActionType.NULL;
+        }
+        else
+        {
+            _selectedAction.Value = actionType;
+        }
+    }
+
+    public void OnSelectedMove()
+    {
+        SelectAction(ActionType.MOVE);
+    }
+    public void OnSelectedAttack()
+    {
+        SelectAction(ActionType.ATTACK);
+    }
+    public void OnSelectedBlock()
+    {
+        SelectAction(ActionType.BLOCK);
+    }
+    public void OnSelectedWait()
+    {
+        SelectAction(ActionType.WAIT);
     }
 }

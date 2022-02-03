@@ -6,13 +6,17 @@ public class PlayerCellSelect : MonoBehaviour
 {
     [SerializeField] private PlayerTurnPlanning _playerTurnPlanning;
     [SerializeField] private RuntimeNavGrid _navGrid;
-    //[SerializeField] private NavGridVolume _navGridVolume;
     [SerializeField] private PathVariable _path;
     [SerializeField] private LayerMask _layerMask;
-    [SerializeField] private Vector3 _target;
+    [SerializeField] private ActionTypeVariable _selectedAction;
+    private Vector3 _target;
+    public bool IsValidMousePosition => _isValidMousePosition;
+    [SerializeField]
+    private bool _isValidMousePosition = false;
+
+    //pathfinding 
     private List<GridCell> openSet = new List<GridCell>();
     private HashSet<GridCell> closedSet = new HashSet<GridCell>();
-    private int counter;
 
 
     // Start is called before the first frame update
@@ -24,15 +28,24 @@ public class PlayerCellSelect : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        //get the mouse position on the board
         Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
         RaycastHit hit;
         if (Physics.Raycast(ray, out hit, 100,_layerMask))
         {
+            _isValidMousePosition = true;
             _target = hit.point;
             Debug.DrawLine(ray.origin, _target, Color.cyan);
         }
-
-        GetPath(transform.position, _target);
+        else
+        {
+            _isValidMousePosition = false;
+        }
+        if (_isValidMousePosition == true && (_selectedAction.Value == ActionType.MOVE || _selectedAction.Value == ActionType.ATTACK))
+        {
+            //find the path to the mouse position
+            GetPath(transform.position, _target);
+        }
     }
 
     public void GetPath(Vector3 start, Vector3 end)

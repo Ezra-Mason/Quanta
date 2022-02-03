@@ -30,19 +30,22 @@ public class PlayerTurnPlanning : MonoBehaviour
     private TurnAction _lastAction;
     [SerializeField] private ActionTypeVariable _selectedActionType;
     private TurnAction _inputTurnAction;
+    [SerializeField] PlayerCellSelect _playerCellSelect;
 
     // Start is called before the first frame update
     void Start()
     {
         _isPlanning = true;
         _playerPosition.SetValue(transform.position);
+        _selectedActionType.Value = ActionType.NULL;
     }
 
     // Update is called once per frame
     void Update()
     {
-
-        if (Input.GetMouseButtonDown(0) && _selectedActionType.Value != ActionType.NULL)
+        bool validClick = _playerCellSelect.IsValidMousePosition &&
+                            Input.GetMouseButtonDown(0) && _selectedActionType.Value != ActionType.NULL;
+        if (validClick)
         {
             //SelectAction(new TurnAction(_selectedActionType.Value, _inputDirection, 1));
             SelectAction(new TurnAction(ActionType.MOVE, new Vector2(0f,1f), 1));

@@ -405,6 +405,7 @@ MonoBehaviour:
   _previewedAction: {fileID: 11400000, guid: e12458134cf770c46ba33ff4e80d34b9, type: 2}
   _undoSelectAction: {fileID: 11400000, guid: 3dc58029a4e4e0047acf70b29bf85c97, type: 2}
   _selectedActionType: {fileID: 11400000, guid: 6f62f7cbfddf0654395fe6d4fcfdd505, type: 2}
+  _playerCellSelect: {fileID: 740289565824267672}
 --- !u!114 &740289565824267672
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -423,7 +424,8 @@ MonoBehaviour:
   _layerMask:
     serializedVersion: 2
     m_Bits: 512
-  _target: {x: 0, y: 0, z: 0}
+  _selectedAction: {fileID: 11400000, guid: 6f62f7cbfddf0654395fe6d4fcfdd505, type: 2}
+  _isValidMousePosition: 0
 --- !u!114 &1419630226699980576
 MonoBehaviour:
   m_ObjectHideFlags: 0
