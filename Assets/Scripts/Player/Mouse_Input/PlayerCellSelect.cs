@@ -5,6 +5,8 @@ using UnityEngine;
 public class PlayerCellSelect : MonoBehaviour
 {
     [SerializeField] private PlayerTurnPlanning _playerTurnPlanning;
+    [SerializeField] private Transform _previewPlayer;
+    [SerializeField] private IntVariable _currentActionPoints;
     [SerializeField] private RuntimeNavGrid _navGrid;
     [SerializeField] private PathVariable _path;
     [SerializeField] private LayerMask _layerMask;
@@ -31,7 +33,7 @@ public class PlayerCellSelect : MonoBehaviour
         //get the mouse position on the board
         Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
         RaycastHit hit;
-        if (Physics.Raycast(ray, out hit, 100,_layerMask))
+        if (Physics.Raycast(ray, out hit, 100, _layerMask))
         {
             _isValidMousePosition = true;
             _target = hit.point;
@@ -44,7 +46,15 @@ public class PlayerCellSelect : MonoBehaviour
         if (_isValidMousePosition == true && (_selectedAction.Value == ActionType.MOVE || _selectedAction.Value == ActionType.ATTACK))
         {
             //find the path to the mouse position
-            GetPath(transform.position, _target);
+            GetPath(_previewPlayer.position, _target);
+        }
+        if (_isValidMousePosition == true && _selectedAction.Value == ActionType.ATTACK)
+        {
+            Vector3 direction = (_target - _previewPlayer.position).normalized;
+            GridCell cell = _navGrid.WorldPointToGridCell(_previewPlayer.position + direction);
+            List<GridCell> temp = new List<GridCell>();
+            temp.Add(cell);
+            _path.Value = temp;
         }
     }
 
@@ -75,7 +85,7 @@ public class PlayerCellSelect : MonoBehaviour
             closedSet.Add(currentNode);
 
             //found the end or exceeded the move limit
-            if (currentNode == endNode || 3 * 8 <= GetNodeDistance(currentNode, startNode))
+            if (currentNode == endNode || _currentActionPoints.Value * 8 <= GetNodeDistance(currentNode, startNode))
             {
                 //Debug.Log("Found end node");
                 RetracePath(startNode, currentNode);

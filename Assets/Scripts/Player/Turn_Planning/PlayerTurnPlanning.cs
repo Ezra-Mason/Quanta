@@ -30,7 +30,11 @@ public class PlayerTurnPlanning : MonoBehaviour
     private TurnAction _lastAction;
     [SerializeField] private ActionTypeVariable _selectedActionType;
     private TurnAction _inputTurnAction;
-    [SerializeField] PlayerCellSelect _playerCellSelect;
+    private float _timer;
+    private float _coolDownTime = 0.2f;
+    [Header("Navigation")]
+    [SerializeField] private PlayerCellSelect _playerCellSelect;
+    [SerializeField] private PathVariable _pathVariable;
 
     // Start is called before the first frame update
     void Start()
@@ -43,29 +47,39 @@ public class PlayerTurnPlanning : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (_timer > 0f)
+        {
+            _timer -= Time.deltaTime;
+        }
+
         bool validClick = _playerCellSelect.IsValidMousePosition &&
                             Input.GetMouseButtonDown(0) && _selectedActionType.Value != ActionType.NULL;
         if (validClick)
         {
             //SelectAction(new TurnAction(_selectedActionType.Value, _inputDirection, 1));
-            SelectAction(new TurnAction(ActionType.MOVE, new Vector2(0f,1f), 1));
+            TurnAction pathToAction = PathToAction(_selectedActionType.Value);
+            SelectAction(pathToAction);
+            _timer = _coolDownTime;
+            //SelectAction(new TurnAction(ActionType.MOVE, new Vector2(0f,1f), 1));
         }
 
         // undo the most recent selected action -> convert to button
-        if (Input.GetKey(_controls.Undo))
+        if (Input.GetKey(_controls.Undo) && _timer <= 0f)
         {
             if (_currentActionPoints.Value < _actionPoints.Value)
             {
                 UndoAction();
                 _currentActionPoints.Increment();
             }
+            _timer = _coolDownTime;
         }
 
         //end the players turn -> convert to tick button
-        if (Input.GetKeyDown(KeyCode.Return) && _currentActionPoints.Value == 0)
+        if (Input.GetKeyDown(KeyCode.Return) && _currentActionPoints.Value == 0 && _timer <= 0f)
         {
             //end turn, execute actions 
             _endTurn.Raise();
+            _timer = _coolDownTime;
         }
     }
 
@@ -95,7 +109,6 @@ public class PlayerTurnPlanning : MonoBehaviour
     {
         TurnAction reverseAction = new TurnAction(_lastAction.Type, _lastAction.Direction * -1, _lastAction.Cost);
         _previewPlayerUnit.ExecuteAction(reverseAction);
-        //_previewedActions.Remove(_previewedActions[_previewedActions.Count - 1]);
         _queuedActions.Remove(_queuedActions.List()[_queuedActions.Count() - 1]);
         if (_queuedActions.Count() > 0)
         {
@@ -109,7 +122,22 @@ public class PlayerTurnPlanning : MonoBehaviour
         _selectedActionType.Value = type;
     }
 
+    private TurnAction PathToAction(ActionType action)
+    {
+        if (_pathVariable.Value.Count>0)
+        {
+            Vector3 target = _pathVariable.Value[0].WorldPosition;
+            Vector3 direction3 = target - _previewPlayerUnit.transform.position;
+            Vector2 direction = new Vector2(direction3.x, direction3.z);
+            return new TurnAction(action, direction, 1);
+        }
+        else
+        {
+            Vector2 direction = new Vector2(0f, 0f);
+            return new TurnAction(action, direction, 1);
+        }
 
+    }
     public void OnExecuteNextAction()
     {
         //Debug.Log("Player Turn Manager Executing action" + _actionToExecute.Value);

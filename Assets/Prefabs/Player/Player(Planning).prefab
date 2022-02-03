@@ -406,6 +406,7 @@ MonoBehaviour:
   _undoSelectAction: {fileID: 11400000, guid: 3dc58029a4e4e0047acf70b29bf85c97, type: 2}
   _selectedActionType: {fileID: 11400000, guid: 6f62f7cbfddf0654395fe6d4fcfdd505, type: 2}
   _playerCellSelect: {fileID: 740289565824267672}
+  _pathVariable: {fileID: 11400000, guid: 6561a2878cc004d4aa61b434b653254b, type: 2}
 --- !u!114 &740289565824267672
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -419,6 +420,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _playerTurnPlanning: {fileID: 1218110837528913800}
+  _previewPlayer: {fileID: 1419630225947285317}
+  _currentActionPoints: {fileID: 11400000, guid: bc412c7627034644dbe4b3427f296e80, type: 2}
   _navGrid: {fileID: 11400000, guid: 2463f459866643b49abd32c07e3e487b, type: 2}
   _path: {fileID: 11400000, guid: 6561a2878cc004d4aa61b434b653254b, type: 2}
   _layerMask:
