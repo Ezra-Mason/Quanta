@@ -63,6 +63,12 @@ public class PlayerTurnPlanning : MonoBehaviour
             //SelectAction(new TurnAction(ActionType.MOVE, new Vector2(0f,1f), 1));
         }
 
+        if (_selectedActionType.Value == ActionType.WAIT || _selectedActionType.Value == ActionType.BLOCK)
+        {
+            SelectAction(new TurnAction(_selectedActionType.Value, new Vector2(0f, 0f), 1));
+            _selectedActionType.Value = ActionType.NULL;
+        }
+
         // undo the most recent selected action -> convert to button
         if (Input.GetKey(_controls.Undo) && _timer <= 0f)
         {
