@@ -66,12 +66,7 @@ public class PlayerTurnPlanning : MonoBehaviour
         // undo the most recent selected action -> convert to button
         if (Input.GetKey(_controls.Undo) && _timer <= 0f)
         {
-            if (_currentActionPoints.Value < _actionPoints.Value)
-            {
                 UndoAction();
-                _currentActionPoints.Increment();
-            }
-            _timer = _coolDownTime;
         }
 
         //end the players turn -> convert to tick button
@@ -107,14 +102,20 @@ public class PlayerTurnPlanning : MonoBehaviour
 
     public void UndoAction()
     {
-        TurnAction reverseAction = new TurnAction(_lastAction.Type, _lastAction.Direction * -1, _lastAction.Cost);
-        _previewPlayerUnit.ExecuteAction(reverseAction);
-        _queuedActions.Remove(_queuedActions.List()[_queuedActions.Count() - 1]);
-        if (_queuedActions.Count() > 0)
+        if (_currentActionPoints.Value < _actionPoints.Value)
         {
-            _lastAction = _queuedActions.List()[_queuedActions.Count() - 1];
+
+            TurnAction reverseAction = new TurnAction(_lastAction.Type, _lastAction.Direction * -1, _lastAction.Cost);
+            _previewPlayerUnit.ExecuteAction(reverseAction);
+            _queuedActions.Remove(_queuedActions.List()[_queuedActions.Count() - 1]);
+            if (_queuedActions.Count() > 0)
+            {
+                _lastAction = _queuedActions.List()[_queuedActions.Count() - 1];
+            }
+            _undoSelectAction.Raise();
+            _currentActionPoints.Increment();
         }
-        _undoSelectAction.Raise();
+        _timer = _coolDownTime;
     }
 
     public void SetSelectedAction(ActionType type)
