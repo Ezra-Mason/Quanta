@@ -41,11 +41,19 @@ public class TurnActionButtons : MonoBehaviour
             if (actionType == ActionType.MOVE)
             {
                 _moveUI.position = new Vector3(_movePos.x, _movePos.y + 50f, _movePos.z);
+                _attackUI.position = _attackPos;
             }
-            if (actionType == ActionType.ATTACK)
+            else if (actionType == ActionType.ATTACK)
             {
                 _attackUI.position = new Vector3(_attackPos.x, _attackPos.y + 50f, _attackPos.z);
+                _moveUI.position = _movePos;
             }
+            else
+            {
+                _moveUI.position = _movePos;
+                _attackUI.position = _attackPos;
+            }
+
             _selectedAction.Value = actionType;
         }
     }
