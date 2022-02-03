@@ -7,7 +7,8 @@ public enum ActionType{
     MOVE,
     ATTACK,
     BLOCK,
-    WAIT
+    WAIT,
+    NULL
 }
 [System.Serializable]
 public class TurnAction 

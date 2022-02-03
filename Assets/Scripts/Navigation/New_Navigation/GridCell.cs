@@ -32,6 +32,6 @@ public class GridCell
     private int _hCost;
     public int FCost => _hCost + _gCost;
 
-    public GridNode Parent;
+    public GridCell Parent;
 
 }

@@ -10,6 +10,7 @@ public class NavGridVolume : MonoBehaviour
     private GridCell[,] _grid;
     private Vector2Int _gridSize;
     [SerializeField] private RuntimeNavGrid _runtimeNavGrid;
+    [SerializeField] private PathVariable _pathVariable;
 
     // Start is called before the first frame update
     void Awake()
@@ -61,19 +62,23 @@ public class NavGridVolume : MonoBehaviour
             foreach (GridCell node in _grid)
             {
                 Gizmos.color = node.State == CellState.EMPTY ? Color.white : Color.red;
-
-/*                if (Path != null)
+                if (_pathVariable.Value.Contains(node))
                 {
-                    if (Path.Contains(node))
-                    {
-                        Gizmos.color = Color.black;
-                    }
-                }*/
-/*                if (node == playernode)
-                {
-                    Gizmos.color = Color.green;
+                    Gizmos.color = Color.black;
                 }
-*/                Gizmos.DrawCube(node.WorldPosition, new Vector3(_cellSize / 2f, _cellSize / 2f, _cellSize / 2f));
+                /*                if (Path != null)
+                                {
+                                    if (Path.Contains(node))
+                                    {
+                                        Gizmos.color = Color.black;
+                                    }
+                                }*/
+                /*                if (node == playernode)
+                                {
+                                    Gizmos.color = Color.green;
+                                }
+                */
+                Gizmos.DrawCube(node.WorldPosition, new Vector3(_cellSize / 2f, _cellSize / 2f, _cellSize / 2f));
             }
         }
     }

@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5700376152461583954}
   - component: {fileID: 5700376152461583965}
+  - component: {fileID: 9006284020821291299}
   m_Layer: 0
   m_Name: NavGridVolume
   m_TagString: Untagged
@@ -49,3 +50,20 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 128
   _runtimeNavGrid: {fileID: 11400000, guid: 2463f459866643b49abd32c07e3e487b, type: 2}
+  _pathVariable: {fileID: 11400000, guid: 6561a2878cc004d4aa61b434b653254b, type: 2}
+--- !u!114 &9006284020821291299
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5700376152461583964}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dd26b724002f90647a422e90ac0f93c8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _path: {fileID: 11400000, guid: 6561a2878cc004d4aa61b434b653254b, type: 2}
+  _runtimeNavGrid: {fileID: 11400000, guid: 2463f459866643b49abd32c07e3e487b, type: 2}
+  _highlight: {fileID: 8858595137761726185, guid: 3eb0dce488480fc4e833600d0291edc4, type: 3}
+  _selectedAction: {fileID: 11400000, guid: 6f62f7cbfddf0654395fe6d4fcfdd505, type: 2}
