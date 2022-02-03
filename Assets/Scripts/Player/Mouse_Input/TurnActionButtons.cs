@@ -6,6 +6,10 @@ public class TurnActionButtons : MonoBehaviour
 {
     [SerializeField] private ActionTypeVariable _selectedAction;
     [SerializeField] private IntVariable _currentActionPoints;
+    [SerializeField] private RectTransform _moveUI;
+    private Vector3 _movePos;
+    [SerializeField] private RectTransform _attackUI;
+    private Vector3 _attackPos;
     [SerializeField] private GameEvent _playerEndTurn;
     [SerializeField] private GameEvent _playerUndo;
     private ActionType _currentAction;
@@ -14,16 +18,34 @@ public class TurnActionButtons : MonoBehaviour
     void Start()
     {
         _currentAction = _selectedAction.Value;
+        _movePos = _moveUI.position;
+        _attackPos = _attackUI.position;
     }
 
     private void SelectAction(ActionType actionType)
     {
         if (_selectedAction.Value == actionType)
         {
+            if (actionType == ActionType.MOVE)
+            {
+                _moveUI.position = _movePos;
+            }
+            if (actionType == ActionType.ATTACK)
+            {
+                _attackUI.position = _attackPos;
+            }
             _selectedAction.Value = ActionType.NULL;
         }
         else
         {
+            if (actionType == ActionType.MOVE)
+            {
+                _moveUI.position = new Vector3(_movePos.x, _movePos.y + 50f, _movePos.z);
+            }
+            if (actionType == ActionType.ATTACK)
+            {
+                _attackUI.position = new Vector3(_attackPos.x, _attackPos.y + 50f, _attackPos.z);
+            }
             _selectedAction.Value = actionType;
         }
     }

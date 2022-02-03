@@ -694,6 +694,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _selectedAction: {fileID: 11400000, guid: 6f62f7cbfddf0654395fe6d4fcfdd505, type: 2}
   _currentActionPoints: {fileID: 11400000, guid: bc412c7627034644dbe4b3427f296e80, type: 2}
+  _moveUI: {fileID: 6362969371737001872}
+  _attackUI: {fileID: 6362969371772499734}
   _playerEndTurn: {fileID: 11400000, guid: d2c97880690283243a8c96b5ff162427, type: 2}
   _playerUndo: {fileID: 11400000, guid: d0653e630e5b3c04d8f0806d7532fefa, type: 2}
 --- !u!1 &6362969371695163270
