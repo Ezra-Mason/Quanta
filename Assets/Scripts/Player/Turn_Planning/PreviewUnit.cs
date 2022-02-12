@@ -72,4 +72,14 @@ public class PreviewUnit : MovingUnit
         // implement if needed
         throw new System.NotImplementedException();
     }
+
+    public override void Block()
+    {
+        throw new System.NotImplementedException();
+    }
+
+    public override void Unblock()
+    {
+        throw new System.NotImplementedException();
+    }
 }

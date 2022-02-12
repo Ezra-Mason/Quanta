@@ -533,6 +533,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _unit: {fileID: 4469871999379511175}
+  _actionToExecute: {fileID: 11400000, guid: 456abe05fdc9be04f81ea21cb99f368b, type: 2}
   _planGenerator: {fileID: 11400000, guid: 0f88650b78c4f9345a90b09e4a632094, type: 2}
   _images:
   - {fileID: 3737132786573276674}
@@ -540,7 +541,6 @@ MonoBehaviour:
   - {fileID: 2325275172390713948}
   _ui: {fileID: 11400000, guid: 2903323d31ac0304e9391e271d37d49a, type: 2}
   _playerPosition: {fileID: 11400000, guid: 7f45bc45a09786147919ea1b5d9aefe3, type: 2}
-  _actionToExecute: {fileID: 11400000, guid: 456abe05fdc9be04f81ea21cb99f368b, type: 2}
 --- !u!114 &5716341845910808306
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -559,7 +559,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1014141688672730054}
         m_TargetAssemblyTypeName: EnemyTurnPlanning, Assembly-CSharp
-        m_MethodName: OnPrepareEvent
+        m_MethodName: PrepareNextAction
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -587,7 +587,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1014141688672730054}
         m_TargetAssemblyTypeName: EnemyTurnPlanning, Assembly-CSharp
-        m_MethodName: GeneratePlan
+        m_MethodName: OnTurnStarts
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -615,7 +615,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1014141688672730054}
         m_TargetAssemblyTypeName: EnemyTurnPlanning, Assembly-CSharp
-        m_MethodName: OnMoveEvent
+        m_MethodName: ExecuteNextAction
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

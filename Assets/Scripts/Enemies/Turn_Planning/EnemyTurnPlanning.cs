@@ -3,48 +3,34 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class EnemyTurnPlanning : MonoBehaviour
+public class EnemyTurnPlanning : TurnPlanning
 {
-    [SerializeField] private EnemyUnit _unit;
+    [Header("Enemy")]
     [SerializeField] private EnemyPlanGenerator _planGenerator;
-    private TurnAction[] _plan;
     private ActionType[] _plannedTypes;
     private int _actionPoints = 3;
     [SerializeField] private SpriteRenderer[] _images;
     [SerializeField] private ActionTypeUI _ui;
     [SerializeField] private Vector3Variable _playerPosition;
-    [SerializeField] private IntVariable _actionToExecute;
-    private bool _hasBlocked;
+
 
     // Start is called before the first frame update
-    void Start()
+    protected override void Start()
     {
+        base.Start();
         _plannedTypes = new ActionType[_actionPoints];
-        _plan = new TurnAction[_actionPoints];
+        _plan = new List<TurnAction>();
         GeneratePlan();
     }
 
-    public void OnPrepareEvent()
+    public override void PrepareNextAction()
     {
-        if (_plan[_actionToExecute.Value].Type == ActionType.BLOCK)
-        {
-            Debug.Log("Enemy has blocked");
-            _unit._enemyHealth.SetInvincible(true);
-            _hasBlocked = true;
-            return;
-        }
-        if (_hasBlocked && _plan[_actionToExecute.Value].Type != ActionType.BLOCK)
-        {
-            Debug.Log("Enemy has unblocked");
-            _unit._enemyHealth.SetInvincible(false);
-            _hasBlocked = false;
-            _unit.Unblock();
-        }
+        base.PrepareNextAction();
     }
 
-    public void OnMoveEvent()
+    public override void ExecuteNextAction()
     {
-        _unit.ExecuteAction(_plan[_actionToExecute.Value]);
+        base.ExecuteNextAction();
     }
 
     public void GeneratePlan()
@@ -93,5 +79,11 @@ public class EnemyTurnPlanning : MonoBehaviour
                 _images[image].sprite = _ui.Empty;
                 break;
         }
+    }
+
+    public override void OnTurnStarts()
+    {
+        base.OnTurnStarts();
+        GeneratePlan();
     }
 }

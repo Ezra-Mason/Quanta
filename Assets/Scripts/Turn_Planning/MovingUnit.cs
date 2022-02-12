@@ -22,7 +22,6 @@ public abstract class MovingUnit : MonoBehaviour
         _blockingLayer = _moveSettings.BlockingLayer;
         _inverseMoveTime = 1f / _moveTime;
     }
-
     protected virtual void Update()
     {
         if (_moving)
@@ -94,4 +93,8 @@ public abstract class MovingUnit : MonoBehaviour
     }
     protected abstract void OnCantMove<T>(T Component) where T : Component;
     public abstract bool ExecuteAction(TurnAction action);
+
+    public abstract void Block();
+    public abstract void Unblock();
+
 }

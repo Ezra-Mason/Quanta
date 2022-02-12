@@ -69,15 +69,14 @@ public class EnemyUnit : MovingUnit
         }
 
     }
-
-    public void Block()
+    public override void Block()
     {
         Debug.Log(name + "Blocked");
         _enemyHealth.SetInvincible(true);
         _block.SetActive(true);
     }
 
-    public void Unblock()
+    public override void Unblock()
     {
         _block.SetActive(false);
         _enemyHealth.SetInvincible(false);
