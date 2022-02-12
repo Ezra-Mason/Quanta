@@ -6,14 +6,13 @@ public class TurnManager : MonoBehaviour
 {
     [Header("Navigation Grid")]
     [SerializeField] private NavGridVolume _gridVolume;
+    [Header("Turn Planning Collections")]
+    [SerializeField] private TurnPlanningRuntimeCollection _playerPlanning;
+    [SerializeField] private TurnPlanningRuntimeCollection _enemyPlanning;
     [Header("Events")]
-    [SerializeField] private GameEvent _prepareEvent;
-    [SerializeField] private GameEvent _executeEvent;
     [SerializeField] private GameEvent _playersTurn;
-    private bool _isExecuting;
     [Header("Timings")]
     [SerializeField] private float _timeBetweenMoves = 0.2f;
-    private float _timer;
     [Header("Player")]
     [SerializeField] private TurnActionRuntimeCollection _playerActions;
     [SerializeField] private IntVariable _actionToExecute;
@@ -30,69 +29,50 @@ public class TurnManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (_isExecuting )//&& !_isMoving)
-        {
-            //StartCoroutine(Moves());
-/*            _timer -= Time.deltaTime;
-            if (_actionToExecute.Value < 0 && _timer<=0f)
-                _isExecuting = false;
-
-            if (_timer<=0f)
-            {
-                Debug.Log("Turn manager raised move, " + _actionToExecute.Value);
-                _moveEvent.Raise();
-                _timer = _timeBetweenMoves;
-                _actionToExecute.SetValue(_actionToExecute.Value - 1);
-            }*/
-        }
-    }
-
-    IEnumerator Moves()
-    {
-        //Debug.Log("Starting Moves, ");
-        for (int i = 0; i < _playerActionPoints.Value; i++)
-        {
-
-            //Debug.Log("Turn manager raised move, " + _actionToExecute.Value +"/"+ _playerActionPoints.Value);
-            _gridVolume.UpdateGrid();
-            _actionToExecute.SetValue(i);
-            _prepareEvent.Raise(); // set invincible for blocking mark cells for moving
-            yield return new WaitForEndOfFrame();
-            _executeEvent.Raise(); // do the actions
-            yield return new WaitForSeconds(_timeBetweenMoves);
-        }
-        _isExecuting = false;
-        //Debug.Log("Turn manager ended moves, " + _actionToExecute.Value + "/" + _playerActionPoints.Value);
-
-        //once all units have moved 3 times turn the player preview on
-        PlayersTurnStarted();
-        yield return null;
-    }
-
-    public void PlayersTurnStarted()
-    {
-        _gridVolume.UpdateGrid();
-        _currentPlayerActionPoints.SetValue(3);
-        _playersTurn.Raise();
-
     }
     public void PlayerEndedTurn()
     {
         _actionToExecute.SetValue(0);
         Debug.Log("playerEnded actions to execute is now " + _actionToExecute.Value);
-        _isExecuting = true;
-        _timer = _timeBetweenMoves;
-
         //Start moving all the units together
-        //PrepareMoves();
         StartCoroutine(Moves());
     }
-
-/*    private void PrepareMoves()
+    IEnumerator Moves()
     {
-        for (int i = 0; i < length; i++)
+        for (int i = 0; i < _playerActionPoints.Value; i++)
         {
 
+            _gridVolume.UpdateGrid();
+            _actionToExecute.SetValue(i);
+            //all units prepare actions
+            for (int j = 0; j < _enemyPlanning.List().Count; j++)
+            {
+                _enemyPlanning.List()[j].PrepareNextAction();
+            }
+            for (int j = 0; j < _playerPlanning.List().Count; j++)
+            {
+                _playerPlanning.List()[j].PrepareNextAction();
+            }
+            yield return new WaitForEndOfFrame();
+            //all units now execute these actions
+            for (int j = 0; j < _enemyPlanning.List().Count; j++)
+            {
+                _enemyPlanning.List()[j].ExecuteNextAction();
+            }
+            for (int j = 0; j < _playerPlanning.List().Count; j++)
+            {
+                _playerPlanning.List()[j].ExecuteNextAction();
+            }
+            yield return new WaitForSeconds(_timeBetweenMoves);
         }
-    }*/
+        //once all units have moved 3 times turn the player preview on
+        PlayersTurnStarted();
+        yield return null;
+    }
+    public void PlayersTurnStarted()
+    {
+        _gridVolume.UpdateGrid();
+        _currentPlayerActionPoints.SetValue(3);
+        _playersTurn.Raise();
+    }
 }

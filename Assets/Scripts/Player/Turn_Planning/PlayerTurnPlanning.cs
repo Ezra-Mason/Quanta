@@ -12,6 +12,7 @@ public class PlayerTurnPlanning : TurnPlanning
     [SerializeField] private PlayerUnit _playerUnit;
     [SerializeField] private Vector3Variable _playerPosition;
     [SerializeField] private TurnActionRuntimeCollection _queuedActions;
+    [SerializeField] private TurnPlanningRuntimeCollection _turnPlanning;
     public bool IsPlanning => _isPlanning;
     [SerializeField] private bool _isPlanning;
 
@@ -38,6 +39,7 @@ public class PlayerTurnPlanning : TurnPlanning
     protected override void Start()
     {
         base.Start();
+        _turnPlanning.Add(this);
         _isPlanning = true;
         _playerPosition.SetValue(transform.position);
         _selectedActionType.Value = ActionType.NULL;
@@ -164,5 +166,10 @@ public class PlayerTurnPlanning : TurnPlanning
     {
         _playerPosition.SetValue(transform.position);
         _isPlanning = false;
+    }
+
+    private void OnDisable()
+    {
+        _turnPlanning.Remove(this);
     }
 }

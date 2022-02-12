@@ -272,8 +272,6 @@ GameObject:
   - component: {fileID: 2265027558976928800}
   - component: {fileID: 1218110837528913800}
   - component: {fileID: 740289565824267672}
-  - component: {fileID: 3153789616135095960}
-  - component: {fileID: 1419630226699980577}
   - component: {fileID: 1419630226699980588}
   - component: {fileID: 1419630226699980589}
   - component: {fileID: 5603044868086253954}
@@ -383,6 +381,7 @@ MonoBehaviour:
   _playerUnit: {fileID: 1419630226699980590}
   _playerPosition: {fileID: 11400000, guid: 7f45bc45a09786147919ea1b5d9aefe3, type: 2}
   _queuedActions: {fileID: 11400000, guid: 97e7f828579ae3b46b66d61aa06d978d, type: 2}
+  _turnPlanning: {fileID: 11400000, guid: fb454848412590c4ebbdf7f53e3c6b80, type: 2}
   _isPlanning: 0
   _actionPoints: {fileID: 11400000, guid: 26e5204c486d6b243b0157cfcf623635, type: 2}
   _currentActionPoints: {fileID: 11400000, guid: bc412c7627034644dbe4b3427f296e80, type: 2}
@@ -414,62 +413,6 @@ MonoBehaviour:
     m_Bits: 512
   _selectedAction: {fileID: 11400000, guid: 6f62f7cbfddf0654395fe6d4fcfdd505, type: 2}
   _isValidMousePosition: 0
---- !u!114 &3153789616135095960
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1419630226699980580}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1506de3588f9dca479d9f9527df9c60f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Event: {fileID: 11400000, guid: 3e68e2d14adf4114aaf963f3d1c4b8cd, type: 2}
-  Response:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1218110837528913800}
-        m_TargetAssemblyTypeName: PlayerTurnPlanning, Assembly-CSharp
-        m_MethodName: PrepareNextAction
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
---- !u!114 &1419630226699980577
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1419630226699980580}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1506de3588f9dca479d9f9527df9c60f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Event: {fileID: 11400000, guid: e49854ca7d8ab7e46a49c257352aba0d, type: 2}
-  Response:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1218110837528913800}
-        m_TargetAssemblyTypeName: PlayerTurnPlanning, Assembly-CSharp
-        m_MethodName: ExecuteNextAction
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
 --- !u!114 &1419630226699980588
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -12,12 +12,14 @@ public class EnemyTurnPlanning : TurnPlanning
     [SerializeField] private SpriteRenderer[] _images;
     [SerializeField] private ActionTypeUI _ui;
     [SerializeField] private Vector3Variable _playerPosition;
+    [SerializeField] private TurnPlanningRuntimeCollection _turnPlanning;
 
 
     // Start is called before the first frame update
     protected override void Start()
     {
         base.Start();
+        _turnPlanning.Add(this);
         _plannedTypes = new ActionType[_actionPoints];
         _plan = new List<TurnAction>();
         GeneratePlan();
@@ -86,4 +88,10 @@ public class EnemyTurnPlanning : TurnPlanning
         base.OnTurnStarts();
         GeneratePlan();
     }
+
+    private void OnDisable()
+    {
+        _turnPlanning.Remove(this);
+    }
+
 }

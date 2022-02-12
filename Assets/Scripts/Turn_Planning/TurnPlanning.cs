@@ -17,16 +17,22 @@ public abstract class TurnPlanning : MonoBehaviour
 
     public virtual void PrepareNextAction()
     {
-        if (_plan[_actionToExecute.Value].Type == ActionType.BLOCK)
+        ActionType nextAction = _plan[_actionToExecute.Value].Type;
+        if (nextAction == ActionType.BLOCK)
         {
             _unit.Block();
             _hasBlocked = true;
             return;
         }
-        if (_hasBlocked && _plan[_actionToExecute.Value].Type != ActionType.BLOCK)
+        if (_hasBlocked && nextAction != ActionType.BLOCK)
         {
             _unit.Unblock();
             _hasBlocked = false;
+        }
+
+        if (nextAction == ActionType.MOVE)
+        {
+
         }
     }
     public virtual void ExecuteNextAction()

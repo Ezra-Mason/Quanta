@@ -45,6 +45,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _gridVolume: {fileID: 0}
+  _playerPlanning: {fileID: 11400000, guid: fb454848412590c4ebbdf7f53e3c6b80, type: 2}
+  _enemyPlanning: {fileID: 11400000, guid: 8e909785fa364804ab912265d9bee124, type: 2}
   _prepareEvent: {fileID: 11400000, guid: 3e68e2d14adf4114aaf963f3d1c4b8cd, type: 2}
   _executeEvent: {fileID: 11400000, guid: e49854ca7d8ab7e46a49c257352aba0d, type: 2}
   _playersTurn: {fileID: 11400000, guid: 3bb94b35d729b614f9ea36bdbf14ed74, type: 2}
