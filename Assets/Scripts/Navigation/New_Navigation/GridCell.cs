@@ -13,12 +13,14 @@ public enum CellState
 [System.Serializable]
 public class GridCell 
 {
-    public GridCell(CellState state, Vector3 worldPosition, int gridX, int gridY)
+    public GridCell(GameObject occupier, CellState state, Vector3 worldPosition, int gridX, int gridY)
     {
+        Occupier = occupier;
         State = state;
         _worldPosition = worldPosition;
         _gridPosition = new Vector2Int(gridX, gridY);
     }
+    public GameObject Occupier { get; set; }
     public CellState State { get; set ; }
     public Vector3 WorldPosition { get => _worldPosition; private set { _worldPosition = value; } }
     private Vector3 _worldPosition;

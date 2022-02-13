@@ -38,14 +38,14 @@ public class PlayerUnit : MovingUnit
     }
 
 
-    public void Block()
+    public override void Block()
     {
         Debug.Log(name + "Blocked");
         _block.SetActive(true);
         _health.SetInvincible(true);
     }
 
-    public void Unblock()
+    public override void Unblock()
     {
         _block.SetActive(false);
         _health.SetInvincible(false);

@@ -32,7 +32,7 @@ public class NavGridVolume : MonoBehaviour
                 Vector3 worldPosition = gridBottomLeft + (Vector3.right * (_cellSize * i + _cellSize / 2)) + (Vector3.forward * (_cellSize * j + _cellSize / 2));
                 bool walkable = !(Physics.CheckSphere(worldPosition, _cellSize / 2f, _unwalkable));
                 CellState state = walkable ? CellState.EMPTY : CellState.OCCUPIED;
-                _grid[i, j] = new GridCell(state, worldPosition, i, j);
+                _grid[i, j] = new GridCell(null, state, worldPosition, i, j);
             }
         }
     }

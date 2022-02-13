@@ -433,9 +433,7 @@ GameObject:
   - component: {fileID: 4469871999379511175}
   - component: {fileID: 5006598121763109401}
   - component: {fileID: 1014141688672730054}
-  - component: {fileID: 5716341845910808306}
   - component: {fileID: 7637567644026207316}
-  - component: {fileID: 3646314293597761685}
   m_Layer: 7
   m_Name: Enemy
   m_TagString: Untagged
@@ -533,6 +531,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _unit: {fileID: 4469871999379511175}
+  _actionToExecute: {fileID: 11400000, guid: 456abe05fdc9be04f81ea21cb99f368b, type: 2}
+  _runtimeNavGrid: {fileID: 11400000, guid: 2463f459866643b49abd32c07e3e487b, type: 2}
   _planGenerator: {fileID: 11400000, guid: 0f88650b78c4f9345a90b09e4a632094, type: 2}
   _images:
   - {fileID: 3737132786573276674}
@@ -540,35 +540,7 @@ MonoBehaviour:
   - {fileID: 2325275172390713948}
   _ui: {fileID: 11400000, guid: 2903323d31ac0304e9391e271d37d49a, type: 2}
   _playerPosition: {fileID: 11400000, guid: 7f45bc45a09786147919ea1b5d9aefe3, type: 2}
-  _actionToExecute: {fileID: 11400000, guid: 456abe05fdc9be04f81ea21cb99f368b, type: 2}
---- !u!114 &5716341845910808306
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6805954689040108277}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1506de3588f9dca479d9f9527df9c60f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Event: {fileID: 11400000, guid: 3e68e2d14adf4114aaf963f3d1c4b8cd, type: 2}
-  Response:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1014141688672730054}
-        m_TargetAssemblyTypeName: EnemyTurnPlanning, Assembly-CSharp
-        m_MethodName: OnPrepareEvent
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+  _turnPlanning: {fileID: 11400000, guid: 8e909785fa364804ab912265d9bee124, type: 2}
 --- !u!114 &7637567644026207316
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -587,35 +559,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1014141688672730054}
         m_TargetAssemblyTypeName: EnemyTurnPlanning, Assembly-CSharp
-        m_MethodName: GeneratePlan
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
---- !u!114 &3646314293597761685
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6805954689040108277}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1506de3588f9dca479d9f9527df9c60f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Event: {fileID: 11400000, guid: e49854ca7d8ab7e46a49c257352aba0d, type: 2}
-  Response:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1014141688672730054}
-        m_TargetAssemblyTypeName: EnemyTurnPlanning, Assembly-CSharp
-        m_MethodName: OnMoveEvent
+        m_MethodName: OnTurnStarts
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

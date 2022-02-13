@@ -5,9 +5,9 @@ using UnityEngine;
 [CreateAssetMenu(menuName ="Enemy Plans/Random")]
 public class RandomEnemyPlanGenerator : EnemyPlanGenerator
 {
-    public override TurnAction[] GeneratePlan(int actionPoints, Vector3 position, Vector3 targetPosition)
+    public override List<TurnAction> GeneratePlan(int actionPoints, Vector3 position, Vector3 targetPosition)
     {
-        TurnAction[] plan = new TurnAction[actionPoints];
+        List<TurnAction> plan = new List<TurnAction>();
         for (int i = 0; i < actionPoints; i++)
         {
             int rand = Random.Range(0, 3);
@@ -26,11 +26,11 @@ public class RandomEnemyPlanGenerator : EnemyPlanGenerator
                     direction.y = Mathf.Sign(direction.y) * 1;
                     direction.x = 0f;
                 }
-                plan[i] = new TurnAction(type, direction, 1);
+                plan.Add(new TurnAction(type, direction, 1));
             }
             else
             {
-                plan[i] = new TurnAction(type, Vector2.zero, 1);
+                plan.Add(new TurnAction(type, Vector2.zero, 1));
             }
         }
         return plan;

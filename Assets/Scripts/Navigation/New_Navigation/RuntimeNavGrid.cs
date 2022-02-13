@@ -28,6 +28,16 @@ public class RuntimeNavGrid : ScriptableObject
         _grid = grid;
     }
 
+    public void UpdateCell(Vector3 position, CellState state, GameObject occupier)
+    {
+        float x = Mathf.Clamp01((position.x + _gridExtent.x / 2) / _gridExtent.x);
+        float y = Mathf.Clamp01((position.z + _gridExtent.y / 2) / _gridExtent.y);
+
+        int newX = Mathf.RoundToInt((_gridSize.x - 1) * x);
+        int newY = Mathf.RoundToInt((_gridSize.y - 1) * y);
+        _grid[newX, newY].State = state;
+        _grid[newX, newY].Occupier = occupier;
+    }
 
     public GridCell WorldPointToGridCell(Vector3 position)
     {
