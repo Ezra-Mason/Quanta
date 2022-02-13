@@ -376,6 +376,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _unit: {fileID: 1419630226699980590}
   _actionToExecute: {fileID: 11400000, guid: 456abe05fdc9be04f81ea21cb99f368b, type: 2}
+  _runtimeNavGrid: {fileID: 11400000, guid: 2463f459866643b49abd32c07e3e487b, type: 2}
   _controls: {fileID: 11400000, guid: bd7a68929ab6bf942af2a1a08f4bf384, type: 2}
   _previewPlayerUnit: {fileID: 3348097443727813964}
   _playerUnit: {fileID: 1419630226699980590}

@@ -7,6 +7,7 @@ public abstract class TurnPlanning : MonoBehaviour
     [Header("Base Turn Planning")]
     [SerializeField] protected MovingUnit _unit;
     [SerializeField] protected IntVariable _actionToExecute;
+    [SerializeField] protected RuntimeNavGrid _runtimeNavGrid;
     protected List<TurnAction> _plan;
     protected bool _hasBlocked;
 
@@ -32,7 +33,11 @@ public abstract class TurnPlanning : MonoBehaviour
 
         if (nextAction == ActionType.MOVE)
         {
-
+            Vector3 direction = new Vector3(_plan[_actionToExecute.Value].Direction.x, transform.position.y, _plan[_actionToExecute.Value].Direction.y);
+            if (_runtimeNavGrid.WorldPointToGridCell(transform.position + direction).State == CellState.EMPTY)
+            {
+                _runtimeNavGrid.UpdateCell(transform.position + direction, CellState.MARKED, gameObject);
+            }
         }
     }
     public virtual void ExecuteNextAction()

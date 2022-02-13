@@ -63,7 +63,8 @@ public abstract class MovingUnit : MonoBehaviour
             return true;
         }
 
-        if (cell.State == CellState.EMPTY)
+        //is the cell empty or has been marked by this moving object
+        if (cell.State <= CellState.MARKED && cell.Occupier == gameObject)
         {
             return false;
         }
@@ -73,24 +74,6 @@ public abstract class MovingUnit : MonoBehaviour
         }
     }
 
-    protected bool CheckMove(float xDirection, float zDirection, out RaycastHit hit)
-    {
-        Vector3 start = transform.position;
-        Vector3 end = start + new Vector3(xDirection, 0f, zDirection);
-
-        RaycastHit hitInfo;
-        _collider.enabled = false;
-        Physics.Linecast(start, end, out hitInfo, _blockingLayer);
-        _collider.enabled = true;
-        hit = hitInfo;
-
-        //if nothing is hit, move the object
-        if (hitInfo.transform == null)
-        {
-            return true;
-        }
-        return false;
-    }
     protected abstract void OnCantMove<T>(T Component) where T : Component;
     public abstract bool ExecuteAction(TurnAction action);
 

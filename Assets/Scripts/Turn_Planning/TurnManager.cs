@@ -48,20 +48,24 @@ public class TurnManager : MonoBehaviour
             for (int j = 0; j < _enemyPlanning.List().Count; j++)
             {
                 _enemyPlanning.List()[j].PrepareNextAction();
+                _gridVolume.UpdateGrid();
             }
             for (int j = 0; j < _playerPlanning.List().Count; j++)
             {
                 _playerPlanning.List()[j].PrepareNextAction();
+                _gridVolume.UpdateGrid();
             }
             yield return new WaitForEndOfFrame();
             //all units now execute these actions
             for (int j = 0; j < _enemyPlanning.List().Count; j++)
             {
                 _enemyPlanning.List()[j].ExecuteNextAction();
+                _gridVolume.UpdateGrid();
             }
             for (int j = 0; j < _playerPlanning.List().Count; j++)
             {
                 _playerPlanning.List()[j].ExecuteNextAction();
+                _gridVolume.UpdateGrid();
             }
             yield return new WaitForSeconds(_timeBetweenMoves);
         }
