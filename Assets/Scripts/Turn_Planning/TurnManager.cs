@@ -11,6 +11,7 @@ public class TurnManager : MonoBehaviour
     [SerializeField] private TurnPlanningRuntimeCollection _enemyPlanning;
     [Header("Events")]
     [SerializeField] private GameEvent _playersTurn;
+    [SerializeField] private GameEvent _move;
     [Header("Timings")]
     [SerializeField] private float _timeBetweenMoves = 0.2f;
     [Header("Player")]
@@ -67,6 +68,7 @@ public class TurnManager : MonoBehaviour
                 _playerPlanning.List()[j].ExecuteNextAction();
                 _gridVolume.UpdateGrid();
             }
+            _move.Raise();
             yield return new WaitForSeconds(_timeBetweenMoves);
         }
         //once all units have moved 3 times turn the player preview on
