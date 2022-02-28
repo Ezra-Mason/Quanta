@@ -7,6 +7,7 @@ public class RuntimeNavGrid : ScriptableObject
 {
     public GridCell[,] Grid => _grid;
     [SerializeField] private GridCell[,] _grid;
+    [SerializeField] public Vector2Int GridExtent => _gridExtent;
     private Vector2Int _gridExtent = new Vector2Int(10, 10);
     private Vector2Int _gridSize;
 
